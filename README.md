@@ -8,3 +8,26 @@
   <a href="https://blog.vidorra.life/">Live Demo</a>
 </p>
 
+
+## 使用方法
+
+1. 克隆仓库到本地/themes文件夹（文件夹命名为dreamlandbook）
+
+```bash
+git clone https://github.com/ROYIANS/hexo-theme-dreamlandbook
+```
+
+2. 将主题内的`postcss.config.js`和`tailwind.config.js`移动到hexo博客根目录下
+3. 添加必要依赖：
+
+```bash
+yarn add autoprefixer postcss postcss-import postcss-load-config tailwindcss tailwindcss-typography
+```
+
+4. 修改主题`_config.yml`
+
+```yml
+...
+theme: dreamlandbook
+...
+```
