@@ -1,7 +1,7 @@
 # hexo-theme-dreamlandbook
 
 <p align='center'>
-  DreamlandBook 主题，魔改自[hexo-theme-maple](https://github.com/xbmlz/hexo-theme-maple)主题。
+  DreamlandBook 主题，魔改自 <a href="https://github.com/xbmlz/hexo-theme-maple">hexo-theme-maple</a> 主题。
 </p>
 
 <p align='center'>
