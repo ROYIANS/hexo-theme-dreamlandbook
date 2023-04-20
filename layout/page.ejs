@@ -1,0 +1,21 @@
+<main id="content-inner">
+    <div id="page">
+        <% switch (page.type) {
+            case 'categories': %>
+                <%- partial('category') %>
+            <% break;
+            case 'tags': %>
+            <%- partial('tag') %>
+            <% break;
+            case 'links': %>
+                <%- partial('links') %>
+			<% break;
+            case 'memos': %>
+                <%- partial('memos') %>
+            <% break;
+            default: %>
+                <%- partial('post') %>
+            <% break;
+        } %>
+    </div>
+</main>

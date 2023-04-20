@@ -1,0 +1,41 @@
+<%#
+this page will judge whether current page is 'tag.'
+url:'http://localhost:4000/tag/' return false.
+url:'http://localhost:4000/tags/test/' return true.
+if you enter 'tag' page by click link will show all tags.
+otherwise if you enter 'tags' by click post header link will show the single tag of this post.
+how to add a tag page:
+    1. hexo new page "tag"
+    2. cd source/tag/index.md
+    3. add layout pattern like this:
+    ---
+    title: '''tag'''
+    date: 2019-06-09 09:56:49
+    layout: tag
+    ---
+ %>
+<% if(is_tag()){ %>
+    <%- partial('archive', { pagination: config.tag, index: true, title: page.tag }) %>
+<% } else { %>
+    <section class="px-6 max-w-prose mx-auto md:px-0">
+        <!-- header -->
+        <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+            <div class="pt-4 md:pt-6">
+                <h1 id="article-title" class="heti--serif text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+                    Tags
+                </h1>
+            </div>
+        </header>
+        <%
+            const TAGS = []
+            site.tags.forEach(item => {
+                TAGS.push({
+                    path: item.path,
+                    name: item.name,
+                    length: item.length
+                })
+            })
+        %>
+        <%- partial('_component/InfiniteLoopSlider', {tagList: TAGS, isFriend: false}) %>
+    </section>
+<% } %>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+<head>
+    <%- partial('_partial/head', { cache: true }) %>
+</head>
+<body class="heti--sans bg-white-900 dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+<%- partial('_partial/header', { cache: true }) %>
+<main class="py-12 px-0 md:px-12">
+    <%- body %>
+</main>
+<%- partial('_partial/footer', { cache: true }) %>
+<div class="fixed right-4 bottom-10 z-100 grid grid-cols-1 gap-y-2 justify-center items-center font-normal text-sm text-center">
+    <span title="toggle theme" id="toggle-dark" class="p-4 bg-gray-100 dark:bg-black w-5 h-5 rounded-sm cursor-pointer flex justify-center items-center">
+      <i class="" id="theme-icon"></i>
+    </span>
+    <span class="p-4 bg-gray-100 dark:bg-black w-5 h-5 rounded-sm cursor-pointer flex justify-center items-center" id="go-top">
+      <i class="ri-arrow-up-line"></i>
+    </span>
+</div>
+<%- partial('_partial/after-footer') %>
+</body>
+
+</html>

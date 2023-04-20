@@ -1,0 +1,18 @@
+blockquote {
+  @apply relative text-sm break-words;
+  font-family: "ROYIANS", "Helvetica Neue", helvetica, arial, "Heti Hei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin-left: 0!important;
+  margin-right: 0!important;
+}
+
+blockquote::before {
+  font-size: 1rem;
+  opacity: .6;
+  margin: -1rem 0;
+  display: block;
+  content: "\ec51";
+  left: -1rem;
+  position: absolute;
+  font-family: remixicon!important;
+  font-style: normal;
+}

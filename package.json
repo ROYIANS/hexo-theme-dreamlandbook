@@ -1,0 +1,35 @@
+{
+  "name": "hexo-theme-dreamland-book",
+  "version": "1.0.0",
+  "description": "A Simple and Card UI Design theme for Hexo",
+  "main": "package.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "dreamland",
+    "dreamland book",
+    "ROYIANS",
+    "hexo-theme-dreamland-book"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://blog.vidorra.life/",
+  "author": "ROYIANS",
+  "files": [
+    "languages",
+    "layout",
+    "scripts",
+    "source",
+    "_config.yml"
+  ],
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "postcss-import": "^15.1.0",
+    "postcss-load-config": "^4.0.1",
+    "tailwindcss": "^3.3.1",
+    "tailwindcss-typography": "^3.1.0"
+  }
+}

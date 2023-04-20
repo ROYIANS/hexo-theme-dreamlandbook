@@ -1,0 +1,66 @@
+<meta charset="UTF-8">
+<%- partial('_plugins/google-analytics') %>
+<%- partial('_plugins/baidu-analytics') %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1, user-scalable=0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<% if(config.author){ %>
+    <meta name="author" content="<%- config.author %>">
+<% } %>
+<% if(config.subtitle){ %>
+    <meta name="subtitle" content="<%- config.subtitle %>">
+<% } %>
+<% if(config.description){ %>
+    <meta name="description" content="<%- config.description %>">
+<% } %>
+<% if(page.keywords){ %>
+    <meta name="keywords" content="<%- page.keywords %>">
+<% } else if (config.keywords) { %>
+    <meta name="keywords" content="<%- config.keywords %>">
+<% } %>
+<%
+var title = page.title;
+if (is_archive()) {
+    title = __('archive_a');
+    if (is_month()) {
+        title += ': ' + page.year + '/' + page.month;
+    } else if (is_year()) {
+        title += ': ' + page.year;
+    }
+} else if (is_category()) {
+    title = __('category') + ': ' + page.category;
+} else if (is_tag()) {
+    title = __('tag') + ': ' + page.tag;
+}
+%>
+<title>
+    <% if (title){ %><%= title %> |
+    <% } %>
+    <%= config.title %></title>
+
+<%# favicon %>
+<% if (theme.favicon){ %>
+    <link rel="icon" href="<%- url_for(theme.favicon) %>">
+<% } %>
+
+<%- css(theme.asset.main_css) %>
+<%- css(theme.asset.nprogress_css) %>
+<%- css(theme.asset.heti_custom_css) %>
+
+<%- css(theme.asset.remixicon)  %>
+
+<%- js(theme.asset.jquery) %>
+<%- js(theme.asset.heti_add_on_js) %>
+<%- js(theme.asset.utils) %>
+
+<% if(theme.twikoo.enable){ %>
+    <%- js(theme.asset.twikoojs) %>
+<% } %>
+
+<%- partial('_plugins/tailwindcss') %>
+<%- partial('_plugins/nprogress') %>
+<%- partial('_plugins/theme') %>
+
+<% if (theme.extends.head) for (const i of theme.extends.head){ %>
+    <%- i %>
+<% } %>
+

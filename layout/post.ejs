@@ -1,0 +1,77 @@
+<!-- css -->
+<%- css(theme.asset.fancybox_css) %>
+<%- css('lib/tocbot/tocbot.min.css') %>
+<!-- toc -->
+<% if (toc(page.content).length !== 0) { %>
+    <%- partial('_partial/toc') %>
+<% } %>
+<section class="px-6 max-w-prose mx-auto md:px-0">
+    <!-- header -->
+    <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+        <div class="pt-4 md:pt-6">
+            <h1 id="article-title" class="heti--serif text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+                <%- page.title %>
+                <span class="text-xs opacity-50 font-normal"><%- page.author || config.author %></span>
+            </h1>
+            <div>
+                <section class="flex items-center gap-3 text-sm">
+                    <time><%- date(page.updated, "YYYY-MM-DD") %></time>
+                    <span class="text-gray-400">·</span>
+                    <span><%= min2read(page.content) %> min</span>
+                    <span class="text-gray-400">·</span>
+                    <span><%= wordcount(page.content) %> words</span>
+                    <% if(page.comment){ %>
+                        <span class="text-gray-400">·</span>
+                        <span class="post-meta-commentcount" title="评论数">
+                            <i class="fa-solid fa-message"></i>
+                            <a href="#twikoo">
+                                <span id="twikoo-count"><i class="ri-loader-4-line animate-spin inline-block"></i></span> comment
+                            </a>
+                        </span>
+                    <% } %>
+                </section>
+            </div>
+        </div>
+    </header>
+    <!-- content -->
+    <article class="heti text-lg post-content mt-10 prose dark:prose-invert post-content <%= page.sans ? '' : 'heti--serif' %> <%= page.customClass %>">
+        <%- page.content %>
+    </article>
+    <!-- prev and next -->
+    <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+        <div>
+            <% if (page.prev) { %>
+                <a href="<%- url_for(page.prev.path) %>"
+                   class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+                    <i class="ri-arrow-left-s-line"></i>
+                    <%- page.prev.title %>
+                </a>
+            <% } %>
+        </div>
+        <div>
+            <% if (page.next) { %>
+                <a href="<%- url_for(page.next.path) %>"
+                   class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+                    <%- page.next.title %>
+                    <i class="ri-arrow-right-s-line"></i>
+                </a>
+            <% } %>
+        </div>
+    </div>
+    <!-- comment -->
+    <% if(theme.twikoo.enable){ %>
+        <div id="comment" class="article-comments mt-12"></div>
+        <%- partial('_plugins/twikoo') %>
+    <% } %>
+    <!-- 标点挤压 -->
+    <script>
+      // const heti = new Heti('.heti');
+      // heti.autoSpacing(); // 自动进行中西文混排美化和标点挤压
+    </script>
+</section>
+<!-- js inspect -->
+<%- js('lib/clipboard.min') %>
+<%- partial('_plugins/mathjax') %>
+<%- partial('_plugins/mermaid') %>
+<%- partial('_plugins/fancybox') %>
+<%- partial('_plugins/tocbot') %>

@@ -1,0 +1,22 @@
+<%- js(theme.asset.fancybox) %>
+<script>
+  function doFancyBox() {
+    $('.post-content').each(function (i) {
+      $(this).find('img').not('.no_fancy').each(function () {
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function () {
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      // options
+    })
+  }
+  $(document).ready(() => {
+    doFancyBox()
+  })
+</script>

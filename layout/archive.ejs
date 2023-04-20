@@ -1,0 +1,74 @@
+<section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
+    <% if (title) { %>
+        <div class="flex flex-col h-48 items-center justify-center">
+            <h1 class="site-title heti--serif text-4xl leading-relaxed">
+                <i class="ri-hashtag" style="color: var(--roy-main)"></i>
+                <%= title %>
+            </h1>
+        </div>
+    <% } else { %>
+        <div class="flex flex-col h-48 items-center justify-center">
+            <h1 class="site-title heti--serif text-4xl leading-none relative before:absolute before:block
+                        before:w-2 before:h-2 before:top-0 before:-right-2 before:rounded before:border-red-700
+                        before:border-2 before:border-solid"
+                style="font-family: <%= theme.title_font.enable ? theme.title_font.family : '' %>;
+                       font-size: <%= theme.title_font.enable ? theme.title_font.font_size : '' %>;">
+                <%= (theme.site && theme.site.title) || config.title %>
+            </h1>
+            <p class="text-gray-500 mt-2">
+                <%= (theme.site && theme.site.subtitle) || config.subtitle %>
+            </p>
+        </div>
+    <% } %>
+    <% var last_month = ''; %>
+    <% var last_year = ''; %>
+    <% page.posts.each(function (post) { %>
+        <% var cur_month = `${post.date.month() + 1}`.padStart(2, '0'); %>
+        <% var cur_year = post.date.year(); %>
+        <% var cur_date = post.date.date(); %>
+        <% if(last_month !== cur_month || last_year !== cur_year){ %>
+            <div class="relative pointer-events-none">
+                <span class="heti--serif text-lg opacity-10 absolute -left-2 md:-left-4"><%- cur_year %>.<%- cur_month %></span>
+            </div>
+        <% last_month = cur_month; last_year = cur_year } %>
+        <div class="grid grid-cols-12 gap-4">
+            <section class="col-span-2 text-gray-400 my-1 text-sm time whitespace-nowrap">
+                <ul class="text-right">
+                    <% post.categories.data.forEach(categories => { %>
+                        <li class="leading-relaxed overflow-ellipsis overflow-hidden">
+                            <a href="<%= categories.path %>" title="<%= categories.name %>">
+                                <%= categories.name %>
+                            </a>
+                        </li>
+                    <% }) %>
+                </ul>
+            </section>
+            <section class="col-span-2 heti--serif text-4xl text-center">
+                <%- `${cur_date}`.padStart(2, '0') %>
+            </section>
+            <a href="<%- url_for(post.path) %>" class="col-span-8">
+                <header>
+                    <h2 class="text-xl heti--serif">
+                        <%- post.title %>
+                    </h2>
+                </header>
+                <section class="text-gray-400 my-1 text-sm time">
+                    <p class="text-xs flex flex-wrap items-center whitespace-nowrap overflow-hidden">
+                        <span class=""><%= post.author || config.author %></span>
+                        <span class="text-gray px-1">·</span>
+                        <span class='opacity-50 before:opacity-70'><%= min2read(post.content) %>min</span>
+                        <span class="text-gray px-1">·</span>
+                        <% post.tags.data.forEach(tag => { %>
+                            <span class="bg-gray-100 dark:bg-black px-1.5 rounded-sm flex ml-1"><%= tag.name %></span>
+                        <% }) %>
+                    </p>
+                    <p class="line-clamp-4">
+                        <% if (post.excerpt) { %>
+                            <%= post.excerpt %>
+                        <% } %>
+                    </p>
+                </section>
+            </a>
+        </div>
+    <% }) %>
+</section>

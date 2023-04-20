@@ -1,0 +1,41 @@
+<%#
+this page will judge whether current page is 'category.'
+url:'http://localhost:4000/category/' return false.
+url:'http://localhost:4000/categories/test/' return true.
+if you enter 'category' page by click link will show all categories.
+otherwise if you enter 'categories' by click post header link will show the single category of this post.
+how to add a category page:
+    1. hexo new page "category"
+    2. cd source/category/index.md
+    3. add layout pattern like this:
+    ---
+    title: '''category'''
+    date: 2019-06-09 09:56:49
+    layout: category
+    ---
+ %>
+<% if(is_category()){ %>
+    <%- partial('archive', { pagination: config.category, index: true, title: page.category }) %>
+<% } else { %>
+    <section class="px-6 max-w-prose mx-auto md:px-0">
+        <!-- header -->
+        <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+            <div class="pt-4 md:pt-6">
+                <h1 id="article-title" class="heti--serif text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+                    Categories
+                </h1>
+            </div>
+        </header>
+        <%
+            const TAGS = []
+            site.categories.forEach(item => {
+                TAGS.push({
+                    path: item.path,
+                    name: item.name,
+                    length: item.posts.length
+                })
+            })
+        %>
+        <%- partial('_component/InfiniteLoopSlider', {tagList: TAGS, isFriend: false}) %>
+    </section>
+<% } %>

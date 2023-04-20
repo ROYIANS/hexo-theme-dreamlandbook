@@ -1,0 +1,51 @@
+<header class="fixed bg-opacity-90 bg-white dark:bg-zinc-900 w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+    <div class="max-auto">
+        <nav class="flex items-center text-base min-h-[2rem]">
+            <a href="<%- config.root %>" class="group <%= is_home() ? 'hidden' : '' %>">
+                <h2 class="font-medium heti--sans tracking-tighterp text-l p-2 flex items-center">
+                    <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]"
+                         src="<%- theme.logo %>" alt="<%- config.title %>" />
+                    <%= config.title %>
+                </h2>
+            </a>
+            <div id="header-title"
+                 class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+                <%- page.title %>
+            </div>
+            <div class="flex-1"></div>
+            <div class="flex items-center gap-3">
+                <% for (var i in theme.nav){ %>
+                    <a class="hidden sm:flex text-sm" href="<%- url_for(theme.nav[i]) %>"><%= i %></a>
+                <% } %>
+                <% if (theme.links !== undefined) { %>
+                    <% for (var key in theme.links) { %>
+                        <a class="text-sm hidden sm:flex" title="<%- key %>" href="<%= theme.links[key] %>">
+                            <i class="ri-<%- key.toLowerCase() %>-fill"></i>
+                        </a>
+                    <% } %>
+                <% } %>
+            </div>
+            <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <i class="ri-menu-4-fill"></i>
+        </span>
+                <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <i class="ri-close-fill"></i>
+        </span>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+    <div id="menu-content"
+         class="relative z-20 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+        <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+            <% for (var i in theme.nav){ %>
+                <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+                    <a href="<%- url_for(theme.nav[i]) %>" class="flex h-12 sm:h-auto items-center"><%= i %></a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+    <div class="mask bg-[#ffffff11] dark:bg-[#00000011] absolute inset-0"></div>
+</div>
