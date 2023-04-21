@@ -7,7 +7,7 @@
 <p align='center'>
   <a href="https://little-dream.land/">Live Demo</a>
   <br />
-  国内用户请复制后访问：<a href="https://blog.vidorra.life/" target="_blank">https://blog.vidorra.life/</a>
+  国内用户请访问：<a href="https://blog.vidorra.life/" target="_blank">示例网站</a>
 </p>
 
 
