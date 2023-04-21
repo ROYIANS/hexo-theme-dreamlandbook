@@ -10,11 +10,11 @@
   font-size: 16px;
   font-weight: 400;
   -webkit-font-smoothing: subpixel-antialiased;
-  line-height: 1.5;
+  line-height: 1.7;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  letter-spacing: .02em
+  letter-spacing: .02em;
 }
 
 .heti::before, .heti::after {
@@ -567,7 +567,8 @@
 
 .heti--poetry p {
   text-align: center;
-  text-indent: 0
+  text-indent: 0;
+  line-height: 2;
 }
 
 .heti--annotation p {

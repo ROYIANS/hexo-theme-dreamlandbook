@@ -27,7 +27,7 @@
 }
 
 .post-content img {
-  @apply border border-border-color border-solid dark:border-border-color-dark;
+  @apply border border-border-color border-solid dark:border-border-color-dark mx-auto;
 }
 
 .dark .post-content img {

@@ -45,6 +45,25 @@ function registerHeaderPageTitle() {
   });
 }
 
+function registerHeaderBottomBorder() {
+  const el = document.querySelector("#blog-header")
+  const observer = new IntersectionObserver(
+    ([e]) => {
+      if (e.intersectionRatio < 1) {
+        $("#blog-header")
+          .css("border-bottom", "1px solid rgb(0 0 0 / 0.05)");
+        $("#blog-title-href").toggleClass("hidden", false)
+      } else {
+        $("#blog-header")
+          .css("border-bottom", "none");
+        $("#blog-title-href").toggleClass("hidden", GLOBAL_CONFIG.isHome ? true : false)
+      }
+    },
+    { threshold: [1] }
+  );
+  observer.observe(el);
+}
+
 // go top
 function registerGoTop() {
   $(window).scroll(function () {
@@ -148,6 +167,7 @@ $(document).ready(function () {
   registerMobileMenu();
   registerGoTop();
   preventTouchGesture()
+  registerHeaderBottomBorder();
   window.initComment && initComment();
   if ($("#article-title").length > 0) {
     registerHeaderPageTitle();

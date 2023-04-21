@@ -1,7 +1,7 @@
 <%- js(theme.asset.fancybox) %>
 <script>
-  function doFancyBox() {
-    $('.post-content').each(function (i) {
+  function doFancyBox(element) {
+    element.each(function (i) {
       $(this).find('img').not('.no_fancy').each(function () {
         if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
         var alt = this.alt;
@@ -17,6 +17,6 @@
     })
   }
   $(document).ready(() => {
-    doFancyBox()
+    doFancyBox($('.post-content'))
   })
 </script>

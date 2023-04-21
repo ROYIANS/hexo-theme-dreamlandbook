@@ -11,16 +11,22 @@
         </div>
     </header>
     <!-- content -->
-    <article id="memos" class="bg-white dark:bg-zinc-800 post-content">
-        <section class="flex p-0 memo md:p-5">
-            <img class="w-14 h-14 p-2 rounded object-cover no_fancy" src="<%= theme.avatar %>" alt="<%= config.author %>">
-            <div class="p-2 grid grid-cols-1 text-sm">
-                <p class="font-bold pb-4 text-base" style="color: var(--roy-main)"><%= config.author %></p>
+    <article id="memos" class="bg-white dark:bg-zinc-800">
+        <section class="flex flex-wrap p-0 memo md:p-5">
+            <div class="flex w-full">
+                <div class="w-14 h-14">
+                    <img class="w-full h-full rounded object-cover no_fancy" src="<%= theme.avatar %>" alt="<%= config.author %>">
+                </div>
+                <div class="pl-2">
+                    <p class="font-bold text-base" style="color: var(--roy-main)"><%= config.author %></p>
+                    <p class="time text-xs text-gray-400 pt-2">14:25</p>
+                </div>
+            </div>
+            <div class="p-2 grid grid-cols-1 text-sm w-full">
                 <p class="p-5" id="memos-content">
                     <i class="ri-loader-4-line animate-spin inline-block"></i>
                     正在加载中...
                 </p>
-                <p class="time text-xs text-gray-400 pt-2">14:25</p>
             </div>
         </section>
     </article>
@@ -60,27 +66,33 @@
           if (data && data.length) {
             document.getElementById('memos').innerHTML = data.map(item => {
               return `
-                <section class="flex p-0 memo md:p-5">
-                    <img class="no_fancy object-cover w-14 h-14 p-2 rounded" src="<%= theme.avatar %>" alt="${item.creatorName}">
-                    <div class="p-2 grid grid-cols-1 text-sm">
-                        <p class="font-bold pb-4 text-base" style="color: var(--roy-main)">${item.creatorName}</p>
+                <section class="flex flex-wrap py-5 memo md:p-5">
+                    <div class="flex w-full">
+                        <div class="w-14 h-14">
+                            <img class="w-full h-full rounded object-cover no_fancy" src="<%= theme.avatar %>" alt="${item.creatorName}">
+                        </div>
+                        <div class="pl-2">
+                            <p class="font-bold text-base" style="color: var(--roy-main)">${item.creatorName}</p>
+                            <p class="time text-xs text-gray-400 pt-2">${new Date(parseInt(item.createdTs) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ')}</p>
+                        </div>
+                    </div>
+                    <div class="p-2 grid grid-cols-1 text-sm w-full">
                         <div class="heti">${marked.parse(item.content)}</div>
                         ${imageList(item, item.resourceList)}
-                        <p class="time text-xs text-gray-400 pt-2">${new Date(parseInt(item.createdTs) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ')}</p>
                     </div>
                 </section>
             `
             }).join('\n')
-            doFancyBox()
+            doFancyBox($('#memos'))
           }
         }).catch(err => {
-          document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><pre>${err.message}</pre><p><a onclick="fetchMemos()">点击重试</a></p>`
+          document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><pre>${err.message}</pre><p><button onclick="fetchMemos()">点击重试</button></p>`
         })
       } else {
-        document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><p><a onclick="fetchMemos()">点击重试</a></p>`
+        document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><p><button onclick="fetchMemos()">点击重试</button></p>`
       }
     }).catch(err => {
-      document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><pre>${err.message}</pre><p><a onclick="fetchMemos()">点击重试</a></p>`
+      document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><pre>${err.message}</pre><p><button onclick="fetchMemos()">点击重试</button></p>`
     })
   }
   fetchMemos()

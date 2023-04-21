@@ -1,8 +1,9 @@
-<header class="fixed bg-opacity-90 bg-white dark:bg-zinc-900 w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+<header id="blog-header" class="sticky -top-px left-0 w-full px-5 py-3 backdrop-blur-xl
+                backdrop-saturate-150 z-100" style="background: var(--grain-square-white-opacity-blend)">
     <div class="max-auto">
         <nav class="flex items-center text-base min-h-[2rem]">
-            <a href="<%- config.root %>" class="group <%= is_home() ? 'hidden' : '' %>">
-                <h2 class="font-medium heti--sans tracking-tighterp text-l p-2 flex items-center">
+            <a id="blog-title-href" href="<%- config.root %>" class="group <%= is_home() ? 'hidden' : '' %>">
+                <h2 class="font-medium heti--sans tracking-tighterp text-l p-2 flex items-center whitespace-nowrap w-max" style="inline-size: max-content;">
                     <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]"
                          src="<%- theme.logo %>" alt="<%- config.title %>" />
                     <%= config.title %>
@@ -38,7 +39,8 @@
 </header>
 <div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
     <div id="menu-content"
-         class="relative z-20 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+         class="relative z-20 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300"
+         style="background: var(--grain-square-white-opacity-blend)">
         <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
             <% for (var i in theme.nav){ %>
                 <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
@@ -49,3 +51,33 @@
     </div>
     <div class="mask bg-[#ffffff11] dark:bg-[#00000011] absolute inset-0"></div>
 </div>
+
+<script>
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  function grain(size, name, color) {
+    canvas.width = size;
+    canvas.height = size;
+
+    ctx.fillStyle = color;
+
+    for (let x = 0; x < size; x++) {
+      for (let y = 0; y < size; y++) {
+        if (Math.random() > 0.5) {
+          ctx.fillRect(x, y, 1, 1);
+        }
+      }
+    }
+
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+
+      document.documentElement.style.setProperty(name, `url(${url})`);
+    });
+  }
+
+  const isDark = document.documentElement.classList.contains("dark");
+  const grainColor = isDark ? 'hsla(0,5%,12%,0.14)' : 'hsla(25, 100%, 96%, 0.1375)'
+  grain(256, "--grain-square-white-opacity-blend", grainColor);
+</script>
