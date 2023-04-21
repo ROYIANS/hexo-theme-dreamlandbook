@@ -15,7 +15,7 @@ how to add a tag page:
     ---
  %>
 <% if(is_tag()){ %>
-    <%- partial('archive', { pagination: config.tag, index: true, title: page.tag }) %>
+    <%- partial('_partial/archive', { pagination: config.tag, index: true, title: page.tag }) %>
 <% } else { %>
     <section class="px-6 max-w-prose mx-auto md:px-0">
         <!-- header -->

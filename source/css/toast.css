@@ -1,5 +1,18 @@
 .toast {
+  @apply invisible w-10 h-10 m-auto inset-x-0 z-100 fixed text-sm whitespace-nowrap rounded-full text-center bg-black text-white;
   bottom: 30px;
+}
+
+.toast-message {
+  @apply text-sm overflow-hidden whitespace-nowrap h-full leading-10 p-0 m-0 rounded-r-full bg-black text-white;
+}
+
+.toast-icon {
+  @apply w-10 h-10 float-left box-border p-2;
+}
+
+.toast-image {
+  @apply w-6 h-6;
 }
 
 .toast.show {

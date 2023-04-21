@@ -114,16 +114,26 @@ head::after {
   color: var(--roy-background);
 }
 
-::-webkit-scrollbar-track {
-  background-color: var(--c-bg);
+html {
+  overflow: auto;
+  overflow: overlay;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--c-scroll);
-  border-radius: 4px;
+  border: 5px solid transparent;
+  border-radius: 8px;
+  background: rgba(125, 125, 125, 30%) content-box;
+}
+
+::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
+  background: transparent;
 }

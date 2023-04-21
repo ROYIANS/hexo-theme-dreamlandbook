@@ -26,7 +26,7 @@
         <% var cur_month = `${post.date.month() + 1}`.padStart(2, '0'); %>
         <% var cur_year = post.date.year(); %>
         <% var cur_date = post.date.date(); %>
-        <% if(last_month !== cur_month || last_year !== cur_year){ %>
+        <% if(last_month !== cur_month || last_year !== cur_year) { %>
             <div class="relative pointer-events-none">
                 <span class="heti--serif text-lg opacity-10 absolute -left-2 md:-left-4"><%- cur_year %>.<%- cur_month %></span>
             </div>
@@ -71,4 +71,5 @@
             </a>
         </div>
     <% }) %>
+        <%- partial('_partial/pager', {cache: true}) %>
 </section>

@@ -19,15 +19,15 @@ const dlf = {
     return new Promise((resolve) => {
       const seed = `toast-${dlf.uuid()}`
       let toast = document.createElement('div')
-      toast.classList.add(...'toast invisible w-10 h-10 m-auto inset-x-0 z-100 fixed text-sm whitespace-nowrap rounded-full text-center bg-black text-white'.split(' '))
+      toast.classList.add('toast')
       toast.id = seed
       let toastMessage = document.createElement('div')
-      toastMessage.classList.add(...'toast-message text-sm overflow-hidden whitespace-nowrap h-full leading-10 p-0 m-0 rounded-r-full bg-black text-white'.split(' '))
+      toastMessage.classList.add('toast-message')
       toastMessage.innerText = message
       let toastIcon = document.createElement('div')
-      toastIcon.classList.add(...'toast-icon w-10 h-10 float-left box-border p-2'.split(' '))
+      toastIcon.classList.add('toast-icon')
       if (icon === 'logo') {
-        toastIcon.innerHTML = `<img class="w-6 h-6" alt="logo" src="${GLOBAL_CONFIG.logo}" />`
+        toastIcon.innerHTML = `<img class="toast-image" alt="logo" src="${GLOBAL_CONFIG.logo}" />`
       } else {
         toastIcon.innerHTML = `<i class="${icon}"></i>`
       }

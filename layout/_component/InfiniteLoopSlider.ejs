@@ -1,7 +1,7 @@
 <%
 const Tag = (tag) => {
     return `<div class='tag bg-gray-100 dark:bg-black'>
-                              <a class="min-w-max" href="${url_for(tag.path)}" target="_self" title="${isFriend ? tag.desc : ''}">
+                              <a class="min-w-max" style="inline-size: max-content" href="${url_for(tag.path)}" target="_self" title="${isFriend ? tag.desc : ''}">
                                   ${isFriend ? `<img class="w-8 h-8 rounded-full inline-block" src=${url_for(tag.avatar)} />` : `<i class='ri-hashtag' style="color: var(--roy-main)"></i>`}
                                   <span>${tag.name}</span>
                                   ${isFriend ? '' : `<span>(${tag.length})</span>`}
