@@ -1,0 +1,81 @@
+<% if (theme.algolia_search && theme.algolia_search.enable) { %>
+    <div id="docsearch" class="hidden"></div>
+    <%- css(theme.asset.doc_search_custom_css) %>
+    <%- js(theme.asset.docsearch_js) %>
+
+    <script>
+      (() => {
+        docsearch(Object.assign({
+          appId: '<%= config.algolia.appId %>',
+          apiKey: '<%= config.algolia.apiKey %>',
+          indexName: '<%= config.algolia.indexName %>',
+          container: '#docsearch',
+          placeholder: '<%= _p('search.title') %>...',
+          transformItems: (items) => {
+            return items.map((item, index) => {
+              // We transform the absolute URL into a relative URL to
+              // leverage Next's preloading.
+              const a = document.createElement('a')
+              a.href = item.url
+
+              const hash = a.hash === '#content-wrapper' || a.hash === '#header' ? '' : a.hash
+
+              if (item.hierarchy?.lvl0) {
+                item.hierarchy.lvl0 = item.hierarchy.lvl0.replace(/&amp;/g, '&')
+              }
+
+              if (item._highlightResult?.hierarchy?.lvl0?.value) {
+                item._highlightResult.hierarchy.lvl0.value =
+                  item._highlightResult.hierarchy.lvl0.value.replace(/&amp;/g, '&')
+              }
+
+              return {
+                ...item,
+                url: `${a.pathname}${hash}`,
+                __is_result: () => true,
+                __is_parent: () => item.type === 'lvl1' && items.length > 1 && index === 0,
+                __is_child: () =>
+                  item.type !== 'lvl1' &&
+                  items.length > 1 &&
+                  items[0].type === 'lvl1' &&
+                  index !== 0,
+                __is_first: () => index === 1,
+                __is_last: () => index === items.length - 1 && index !== 0,
+              }
+            })
+          },
+          hitComponent: ({ hit, children }) => {
+            const className = `${(hit.__is_result && hit.__is_result()) ? 'DocSearch-Hit--Result ': ''}` +
+                              `${(hit.__is_parent && hit.__is_parent()) ? 'DocSearch-Hit--Parent ': ''}` +
+                              `${(hit.__is_first && hit.__is_first()) ? 'DocSearch-Hit--FirstChild ': ''}` +
+                              `${(hit.__is_last && hit.__is_last()) ? 'DocSearch-Hit--LastChild ': ''}` +
+                              `${(hit.__is_child && hit.__is_child()) ? 'DocSearch-Hit--Child ': ''}`
+            return {
+              $$typeof: children.$$typeof,
+              constructor: undefined,
+              key: Math.floor(Math.random() * 10000),
+              type: 'a',
+              props: {
+                children: children,
+                class: className,
+                className: className,
+                href: hit.url
+              },
+              ref: undefined,
+              __v: null
+            }
+          }
+        }))
+
+
+        const searchClickFn = () => {
+          document.querySelector('#algolia_search').addEventListener('click', () => {
+            document.querySelector('.DocSearch-Button').click()
+          })
+        }
+
+        searchClickFn()
+      })()
+    </script>
+
+<% } %>

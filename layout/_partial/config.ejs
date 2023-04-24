@@ -1,0 +1,76 @@
+<%
+    let algolia = 'undefined';
+    let env = process.env;
+    if (theme.algolia_search.enable) {
+        algolia = JSON.stringify({
+            appId: env.ALGOLIA_APP_ID || config.algolia.appId || config.algolia.applicationID,
+            apiKey: env.ALGOLIA_API_KEY || config.algolia.apiKey,
+            indexName: env.ALGOLIA_INDEX_NAME || config.algolia.indexName,
+            hits: theme.algolia_search.hits,
+            // search languages
+            languages: {
+                input_placeholder: _p("search.algolia_search.input_placeholder"),
+                hits_empty: _p("search.algolia_search.hits_empty"),
+                hits_stats: _p("search.algolia_search.hits_stats"),
+            }
+        })
+    }
+
+    let translate = 'undefined';
+    if (theme.translate && theme.translate.enable) {
+        translate = JSON.stringify({
+            defaultEncoding: theme.translate.defaultEncoding,
+            translateDelay: theme.translate.translateDelay,
+            msgToTraditionalChinese: theme.translate.msgToTraditionalChinese,
+            msgToSimplifiedChinese: theme.translate.msgToSimplifiedChinese
+        })
+    }
+
+    let copyright = 'undefined';
+    if (theme.copy.enable && theme.copy.copyright.enable){
+        copyright = JSON.stringify({
+            limitCount: theme.copy.copyright.limit_count,
+            languages: {
+                author: _p("copy_copyright.author") + ': ' + (page.author || config.author),
+                link: _p("copy_copyright.link") + ': ',
+                source: _p("copy_copyright.source") + ': ' + config.title,
+                info: _p("copy_copyright.info")
+            }
+        })
+    }
+
+    let noticeOutDate = 'undefined';
+    if (theme.noticeOutdate && theme.noticeOutdate.enable) {
+        noticeOutDate = JSON.stringify({
+            limitDay: theme.noticeOutdate.limit_day,
+            message: _p("notice_out_date.message")
+        })
+    }
+%>
+
+<script>
+  var GLOBAL_CONFIG = {
+    root: '<%= config.root %>',
+    isHome: <%- is_home() %>,
+    isPage: <%- is_page() %>,
+    isPost: <%- is_post() %>,
+    logo: '<%= theme.favicon || config.favicon %>',
+    algolia: <%- algolia %>,
+    translate: <%- translate %>,
+    noticeOutDate: <%- noticeOutDate %>,
+    comment: <%- (theme.twikoo.enable && page.comment) ? 'true' : 'false' %>,
+    date_suffix: {
+      just: '<%= _p("date_suffix.just") %>',
+      min: '<%= _p("date_suffix.min") %>',
+      hour: '<%= _p("date_suffix.hour") %>',
+      day: '<%= _p("date_suffix.day") %>',
+      month: '<%= _p("date_suffix.month") %>'
+    },
+    copyright: <%- copyright %>,
+    copy: {
+      success: '<%= _p("copy.success") %>',
+      error: '<%= _p("copy.error") %>',
+      noSupport: '<%= _p("copy.noSupport") %>'
+    }
+  }
+</script>

@@ -1,5 +1,5 @@
 // mobile menu
-function registerMobileMenu() {
+const registerMobileMenu = () => {
   $("#open-menu").click(function () {
     // set height auto
     $("#menu-panel").css("height", "auto");
@@ -26,7 +26,7 @@ function registerMobileMenu() {
 }
 
 // header page title
-function registerHeaderPageTitle() {
+const registerHeaderPageTitle = () => {
   // 监听文章标题消失时，在header中显示文章标题
   new IntersectionObserver((entries) => {
     if (entries[0].intersectionRatio <= 0) {
@@ -45,7 +45,7 @@ function registerHeaderPageTitle() {
   });
 }
 
-function registerHeaderBottomBorder() {
+const registerHeaderBottomBorder = () => {
   const el = document.querySelector("#blog-header")
   const observer = new IntersectionObserver(
     ([e]) => {
@@ -65,7 +65,7 @@ function registerHeaderBottomBorder() {
 }
 
 // go top
-function registerGoTop() {
+const registerGoTop = () => {
   $(window).scroll(function () {
     if ($(window).scrollTop() > 200) {
       $("#go-top")
@@ -85,7 +85,7 @@ function registerGoTop() {
 }
 
 // copy code
-function registerCopyCode() {
+const registerCopyCode = () => {
   $("figure.highlight").each(function () {
     const copyIcon = $(
       "<i class=\"ri-file-copy-line\" title=\"复制代码\"></i>"
@@ -112,7 +112,12 @@ function registerCopyCode() {
       textarea.value = code;
       document.body.appendChild(textarea);
       textarea.select();
-      document.execCommand("copy");
+      if (document.queryCommandSupported && document.queryCommandSupported('copy')) {
+        document.execCommand("copy");
+        dlf.toast(GLOBAL_CONFIG.copy.success, "default", "ri-file-copy-2-fill")
+      } else {
+        dlf.toast(GLOBAL_CONFIG.copy.noSupport)
+      }
       document.body.removeChild(textarea);
       var ta = document.createElement("textarea");
       ta.style.top = window.scrollY + "px"; // Prevent page scrolling
@@ -130,7 +135,6 @@ function registerCopyCode() {
       var result = document.execCommand("copy");
       // change icon
       $(this).attr("class", result ? "ri-check-fill" : "ri-close-fill");
-      dlf.toast("复制成功", "default", "ri-file-copy-2-fill")
       ta.blur(); // For iOS
       // blur
       $(copyIcon).blur();
@@ -156,11 +160,42 @@ function registerCopyCode() {
   });
 }
 
-function preventTouchGesture() {
+const preventTouchGesture = () => {
   // 阻止双指放大页面
   document.addEventListener("gesturestart", function (event) {
     event.preventDefault();
   });
+}
+
+/**
+ * 複製時加上版權信息
+ */
+const addCopyright = () => {
+  const copyright = GLOBAL_CONFIG.copyright
+  document.body.oncopy = (e) => {
+    e.preventDefault()
+    let textFont; const copyFont = window.getSelection(0).toString()
+    if (copyFont.length > copyright.limitCount) {
+      textFont = copyFont + '\n' + '\n' + '\n' +
+        copyright.languages.author + '\n' +
+        copyright.languages.link + window.location.href + '\n' +
+        copyright.languages.source + '\n' +
+        copyright.languages.info
+    } else {
+      textFont = copyFont
+    }
+    dlf.toast(GLOBAL_CONFIG.copy.success, "default", "ri-file-copy-line")
+    if (e.clipboardData) {
+      return e.clipboardData.setData('text', textFont)
+    } else {
+      return window.clipboardData.setData('text', textFont)
+    }
+  }
+}
+
+const registerSearchEvent = () => {
+  const search = document.getElementById('algolia_search')
+  search.onclick = () => {}
 }
 
 $(document).ready(function () {
@@ -168,7 +203,8 @@ $(document).ready(function () {
   registerGoTop();
   preventTouchGesture()
   registerHeaderBottomBorder();
-  window.initComment && initComment();
+  GLOBAL_CONFIG.comment && initComment();
+  GLOBAL_CONFIG.copyright && addCopyright();
   if ($("#article-title").length > 0) {
     registerHeaderPageTitle();
     registerCopyCode();

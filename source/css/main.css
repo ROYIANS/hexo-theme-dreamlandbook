@@ -50,6 +50,10 @@ html.dark {
   text-shadow: 0 0 1.25px var(--wp--preset--color--custom-light-color);
 }
 
+.no-a-hover {
+  color: inherit!important;
+}
+
 a:hover {
   color: #009688;
   cursor: pointer;

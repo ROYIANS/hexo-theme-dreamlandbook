@@ -1,19 +1,31 @@
-categories: Categories
-search: Search
-tags: Tags
-tagcloud: Tag Cloud
-tweets: Tweets
-prev: Prev
-next: Next
-comment: Comments
-archive_a: Archives
-archive_b: "Archives: %s"
-page: Page %d
-recent_posts: Recent Posts
-newer: Newer
-older: Older
-share: Share
-powered_by: Powered by
-rss_feed: RSS Feed
-category: Category
-tag: Tag
+links:
+  title: Links
+  desc: To apply for a friendship link, please comment below.
+tags:
+  title: Tags
+category:
+  title: Categories
+search:
+  title: Quick Search
+date_suffix:
+  just: Just
+  min: minutes ago
+  hour: hours ago
+  day: days ago
+  month: months ago
+copy_copyright:
+  author: Author
+  link: Link
+  source: Source
+  info: Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+copy:
+  success: Copy successfully
+  error: Copy error
+  noSupport: The browser does not support
+notice_out_date:
+  message: 'It has been ${days} days since the last update, the content of the article may be outdated.'
+toggle_theme: toggle theme
+go_top: go to top
+busuanzi:
+  visitor_count: Visitor Count
+  total_view: Total View

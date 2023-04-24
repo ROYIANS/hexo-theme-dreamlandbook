@@ -87,9 +87,10 @@
             </svg>
             <header class="z-10 relative">
                 <p class="line-clamp-1 font-semibold"><%= page.title %></p>
-                <a href="/post/ios_shortcuts_wallpaper">
+                <a href="<%= page.permalink %>">
                     <p class="text-sm text-true-gray-400 line-clamp-1"><%= page.permalink %></p>
                 </a>
+                <p class="text-sm text-true-gray-400 line-clamp-1"><%= _p("copy_copyright.info") %></p>
             </header>
             <nav class="flex flex-row mt-4 z-10 relative">
                 <div class="mr-4">
@@ -141,7 +142,7 @@
         </div>
     <% } %>
     <!-- comment -->
-    <% if(theme.twikoo.enable){ %>
+    <% if(theme.twikoo.enable && page.comment){ %>
         <div id="comment" class="article-comments mt-12"></div>
         <%- partial('_plugins/twikoo') %>
     <% } %>

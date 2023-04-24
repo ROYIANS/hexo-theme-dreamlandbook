@@ -6,6 +6,41 @@ nav:
   分类: /categories
   友链: /links
 
+# Algolia search
+algolia_search:
+  enable: true
+  hits:
+    per_page: 6
+
+# Conversion between Traditional and Simplified Chinese (簡繁轉換)
+translate:
+  enable: true
+  # The text of a button
+  default: 繁
+  # the language of website (1 - Traditional Chinese/ 2 - Simplified Chinese）
+  defaultEncoding: 2
+  # Time delay
+  translateDelay: 0
+  # The text of the button when the language is Simplified Chinese
+  msgToTraditionalChinese: '繁'
+  # The text of the button when the language is Traditional Chinese
+  msgToSimplifiedChinese: '簡'
+
+# copy settings
+# copyright: Add the copyright information after copied content (複製的內容後面加上版權信息)
+copy:
+  enable: true
+  copyright:
+    enable: true
+    limit_count: 50
+
+# Displays outdated notice for a post (文章過期提醒)
+noticeOutdate:
+  enable: true
+  style: flat # style: simple/flat
+  limit_day: 500 # When will it be shown
+
+
 # favicon
 favicon: /images/royians/logo.png
 

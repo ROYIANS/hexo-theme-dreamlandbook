@@ -1,19 +1,31 @@
-categories: 分类
-search: 搜索
-tags: 标签
-tagcloud: 标签云
-tweets: 推文
-prev: 上一页
-next: 下一页
-comment: 留言
-archive_a: 归档
-archive_b: 归档：%s
-page: 第 %d 页
-recent_posts: 最新文章
-newer: 前一篇
-older: 后一篇
-share: 分享
-powered_by: Powered by
-rss_feed: RSS 订阅
-category: 目录
-tag: 标签
+links:
+  title: 友情链接
+  desc: 申请友链请下方评论
+tags:
+  title: 标签
+category:
+  title: 分类
+search:
+  title: 快速搜索
+date_suffix:
+  just: 刚刚
+  min: 分钟前
+  hour: 小时前
+  day: 天前
+  month: 个月前
+copy_copyright:
+  author: 作者
+  link: 链接
+  source: 来源
+  info: 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+copy:
+  success: 复制成功
+  error: 复制错误
+  noSupport: 浏览器不支持
+notice_out_date:
+  message: '距离上次更新已过去 ${days} 天，文章中的内容可能已经过时。'
+toggle_theme: 切换主题
+go_top: 跳转顶部
+busuanzi:
+  visitor_count: 访客数
+  total_view: 访问量

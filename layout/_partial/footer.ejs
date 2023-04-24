@@ -1,18 +1,28 @@
 <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+    <!-- social links -->
+    <% if (theme.links !== undefined) { %>
+        <div class="flex items-center gap-3 py-3">
+            <% for (var key in theme.links) { %>
+                <a class="text-lg flex" title="<%- key %>" href="<%= theme.links[key] %>">
+                    <i style="text-shadow: none" class="ri-<%- key.toLowerCase() %>-line"></i>
+                </a>
+            <% } %>
+        </div>
+    <% } %>
     <!-- busuanzi -->
     <%- partial('_plugins/busuanzi') %>
     <!-- copyright -->
     <div class="flex items-center gap-2">
-        <span>© 2022</span>
+        <span>© <%= new Date().getFullYear().toString().substr(-4) %></span>
         <i class="ri-hashtag"></i>
-        <a href="https://github.com/ROYIANS" target="_blank" rel="noopener noreferrer">ROYIANS</a>
+        <span><%= config.author %></span>
     </div>
     <!-- powered by -->
     <div class="flex items-center gap-2">
         <span>Powered by</span>
         <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
         <span>&</span>
-        <a href="https://github.com/ROYIANS/hexo-theme-dreamlandbook" target="_blank" rel="noopener noreferrer">DreamlandBook 魔改自 Maple</a>
+        <a href="https://github.com/ROYIANS/hexo-theme-dreamlandbook" target="_blank" rel="noopener noreferrer">DreamlandBook</a>
     </div>
 
 </footer>

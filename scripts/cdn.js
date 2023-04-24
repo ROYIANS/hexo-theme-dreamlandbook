@@ -24,9 +24,19 @@ hexo.extend.filter.register('before_generate', () => {
       file: 'js/utils.js',
       version
     },
+    translate: {
+      name: 'hexo-theme-dreamland-book',
+      file: 'js/tw_cn.js',
+      version
+    },
     heti_custom_css: {
       name: 'hexo-theme-dreamland-book',
       file: 'css/heti/heti.css',
+      version
+    },
+    doc_search_custom_css: {
+      name: 'hexo-theme-dreamland-book',
+      file: 'css/doc_search.css',
       version
     }
   }

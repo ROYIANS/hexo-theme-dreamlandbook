@@ -1,1 +1,4 @@
 <%- js(theme.asset.main_js) %>
+<% if (theme.translate && theme.translate.enable) { %>
+    <%- js(theme.asset.translate) %>
+<% } %>
