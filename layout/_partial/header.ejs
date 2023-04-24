@@ -56,9 +56,9 @@
         <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
             <% for (var i of theme.nav){ %>
                 <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-                    <a class="flex h-12 sm:h-auto items-center" href="<%- url_for(theme.nav[i.url]) %>">
+                    <a class="flex h-12 sm:h-auto items-center" href="<%- url_for(i.url) %>">
                         <% if (i.icon) { %>
-                            <i class="<%= i.icon %>"></i>
+                            <i class="<%= i.icon %> mr-2"></i>
                         <% } %>
                         <span><%= i.title %></span>
                     </a>
