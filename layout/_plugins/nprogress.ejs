@@ -6,14 +6,14 @@
     });
     NProgress.start();
     $("#nprogress .bar").css({
-      background: "#009688",
+      background: "var(--roy-theme)",
     });
     $("#nprogress .peg").css({
-      "box-shadow": "0 0 2px #009688, 0 0 4px #009688",
+      "box-shadow": "0 0 2px var(--roy-theme), 0 0 4px var(--roy-theme)",
     });
     $("#nprogress .spinner-icon").css({
-      "border-top-color": "#009688",
-      "border-left-color": "#009688",
+      "border-top-color": "var(--roy-theme)",
+      "border-left-color": "var(--roy-theme)",
     });
     setTimeout(function () {
       NProgress.done();

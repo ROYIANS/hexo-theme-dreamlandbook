@@ -63,4 +63,5 @@ if (is_archive()) {
 <% if (theme.extends.head) for (const i of theme.extends.head){ %>
     <%- i %>
 <% } %>
-
+<%- theme_main_color_set() %>
+<%- partial('_component/colorful_bg') %>

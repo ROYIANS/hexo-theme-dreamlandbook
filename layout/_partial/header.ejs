@@ -14,14 +14,19 @@
             </div>
             <div class="flex-1"></div>
             <div class="flex items-center gap-3">
-                <% for (var i in theme.nav){ %>
-                    <a class="no-a-hover hidden sm:flex text-sm py-0.5 px-3.5 hover:bg-opacity-20 hover:bg-gray-300 dark:hover:bg-opacity-20 dark:hover:bg-zinc-600" href="<%- url_for(theme.nav[i]) %>"><%= i %></a>
+                <% for (var i of theme.nav){ %>
+                    <a class="no-a-hover hidden sm:flex text-sm py-0.5 px-2 hover:bg-opacity-20 hover:bg-gray-300 dark:hover:bg-opacity-20 dark:hover:bg-zinc-600" href="<%- url_for(theme.nav[i.url]) %>">
+                        <% if (i.icon) { %>
+                        <i class="<%= i.icon %> mr-2"></i>
+                        <% } %>
+                        <span><%= i.title %></span>
+                    </a>
                 <% } %>
                 <% if (theme.algolia_search && theme.algolia_search.enable) { %>
-                    <a id="algolia_search" class="group flex items-center space-x-3 sm:space-x-4 hover:text-gray-600 transition-colors duration-200">
-                        <i class="ri-search-line"></i>
+                    <a id="algolia_search" class="no-a-hover group flex items-center space-x-2 transition-colors duration-200 rounded-md p-0.5 pr-2 bg-opacity-50 hover:bg-gray-200 dark:hover:bg-zinc-700">
+                        <i class="ri-search-2-fill rounded pl-1.5"></i>
                         <span class="hidden sm:inline text-sm"><%= _p('search.title') %></span>
-                        <span style="opacity: 1;" class="hidden sm:block text-gray-400 px-1.5 border border-gray-300 rounded-md">
+                        <span class="hidden leading-none sm:block text-gray-400 px-1.5 border border-gray-300 rounded-md">
                             <span class="sr-only text-xs">Press </span>
                             <kbd class="font-sans">
                                 <abbr title="Control" class="no-underline text-xs">Ctrl </abbr>
@@ -33,13 +38,13 @@
                     </a>
                 <% } %>
             </div>
-            <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
-        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
-          <i class="ri-menu-4-fill"></i>
-        </span>
-                <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
-          <i class="ri-close-fill"></i>
-        </span>
+            <div class="flex items-center justify-center gap-3 ml-3 sm:hidden rounded bg-opacity-50 hover:bg-gray-200 dark:hover:bg-zinc-700 px-1.5">
+                <span aria-hidden="true" role="img" id="open-menu">
+                  <i class="ri-menu-4-fill"></i>
+                </span>
+                <span class="hidden" aria-hidden="true" role="img" id="close-menu">
+                  <i class="ri-close-fill"></i>
+                </span>
             </div>
         </nav>
     </div>
@@ -49,9 +54,14 @@
          class="relative z-20 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300"
          style="background: var(--grain-square-white-opacity-blend)">
         <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
-            <% for (var i in theme.nav){ %>
+            <% for (var i of theme.nav){ %>
                 <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-                    <a href="<%- url_for(theme.nav[i]) %>" class="flex h-12 sm:h-auto items-center"><%= i %></a>
+                    <a class="flex h-12 sm:h-auto items-center" href="<%- url_for(theme.nav[i.url]) %>">
+                        <% if (i.icon) { %>
+                            <i class="<%= i.icon %>"></i>
+                        <% } %>
+                        <span><%= i.title %></span>
+                    </a>
                 </li>
             <% } %>
         </ul>

@@ -1,0 +1,97 @@
+<% if (theme.flow_bg) { %>
+    <style>
+      head::before, head::after,
+      body::before, body::after {
+        display: block;
+        font-size: 52px;
+        color: transparent;
+      }
+
+      head::before, head::after,
+      body::before, body::after {
+        opacity: 0.3;
+        pointer-events: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 3em;
+        height: 3em;
+        content: ".";
+        mix-blend-mode: screen;
+        animation: 44s -27s move infinite ease-in-out alternate;
+      }
+
+      body::before {
+        text-shadow: 2.0128311999em 0.8184920657em 7px <%- random_chinese_color().hex %>,
+        1.4484483914em 1.9265866865em 7px <%- random_chinese_color().hex %>,
+        -0.2788863568em 1.6444618576em 7px <%- random_chinese_color().hex %>,
+        1.8695038202em 2.3782456026em 7px <%- random_chinese_color().hex %>,
+        1.4322118554em -0.3056059791em 7px <%- random_chinese_color().hex %>,
+        2.4303394509em -0.4408608996em 7px <%- random_chinese_color().hex %>,
+        0.6788989967em 0.05536378em 7px <%- random_chinese_color().hex %>,
+        2.38161872em 0.3402669223em 7px <%- random_chinese_color().hex %>,
+        0.034257185em -0.2544877323em 7px <%- random_chinese_color().hex %>,
+        1.6608692799em 0.4925600976em 7px <%- random_chinese_color().hex %>,
+        0.1730151895em 2.0094080072em 7px <%- random_chinese_color().hex %>;
+        animation-duration: 44s;
+        animation-delay: -27s;
+      }
+
+      body::after {
+        text-shadow: 1.4386483947em -0.402649144em 7px var(--roy-theme),
+        2.2081843182em 1.2582179272em 7px var(--theme-primary-color-darker-200),
+        1.6320732175em 1.6670289013em 7px var(--theme-primary-color-darker-100),
+        -0.1317454879em 2.1709996677em 7px var(--theme-primary-color-100),
+        0.3592276135em 1.3685870057em 7px var(--theme-primary-color-200),
+        1.4135514006em 0.798005866em 7px var(--theme-primary-color-300),
+        -0.4801627993em 2.4486225549em 7px var(--theme-primary-color-400),
+        -0.3503513418em -0.314802388em 7px var(--theme-primary-color-500),
+        -0.0726957977em 1.3369296939em 7px var(--theme-primary-color-600),
+        -0.4520564422em 1.5557361239em 7px var(--theme-primary-color-700),
+        1.2941899704em 1.9195998849em 7px var(--theme-primary-color-800);
+        animation-duration: 43s;
+        animation-delay: -32s;
+      }
+
+      head::before {
+        text-shadow: 0.4220771168em 1.8517801084em 7px <%- random_chinese_color().hex %>,
+        0.9172794357em 0.2153388505em 7px <%- random_chinese_color().hex %>,
+        1.4640242735em 2.2805896609em 7px <%- random_chinese_color().hex %>,
+        -0.4009363053em 0.9403382801em 7px <%- random_chinese_color().hex %>,
+        0.7287277452em 1.8355350889em 7px <%- random_chinese_color().hex %>,
+        1.3012790506em -0.4966223614em 7px <%- random_chinese_color().hex %>,
+        -0.1381503392em 1.2456250455em 7px <%- random_chinese_color().hex %>,
+        1.4095061205em -0.4591812314em 7px <%- random_chinese_color().hex %>,
+        2.451263797em 0.8564194792em 7px <%- random_chinese_color().hex %>,
+        1.9345663589em 1.2290960799em 7px <%- random_chinese_color().hex %>,
+        0.9845350223em 0.8537213194em 7px <%- random_chinese_color().hex %>;
+        animation-duration: 42s;
+        animation-delay: -23s;
+      }
+
+      head::after {
+        text-shadow: 1.4386483947em -0.402649144em 7px var(--roy-theme),
+        2.2081843182em 1.2582179272em 7px var(--theme-primary-color-darker-200),
+        1.6320732175em 1.6670289013em 7px var(--theme-primary-color-darker-100),
+        -0.1317454879em 2.1709996677em 7px var(--theme-primary-color-100),
+        0.3592276135em 1.3685870057em 7px var(--theme-primary-color-200),
+        1.4135514006em 0.798005866em 7px var(--theme-primary-color-300),
+        -0.4801627993em 2.4486225549em 7px var(--theme-primary-color-400),
+        -0.3503513418em -0.314802388em 7px var(--theme-primary-color-500),
+        -0.0726957977em 1.3369296939em 7px var(--theme-primary-color-600),
+        -0.4520564422em 1.5557361239em 7px var(--theme-primary-color-700),
+        1.2941899704em 1.9195998849em 7px var(--theme-primary-color-800);
+        animation-duration: 41s;
+        animation-delay: -19s;
+      }
+
+      @keyframes move {
+        from {
+          transform: rotate(0deg) scale(12) translateX(-20px);
+        }
+        to {
+          transform: rotate(360deg) scale(18) translateX(20px);
+        }
+      }
+    </style>
+<% } %>

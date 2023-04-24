@@ -12,13 +12,18 @@
           container: '#docsearch',
           placeholder: '<%= _p('search.title') %>...',
           transformItems: (items) => {
-            return items.map((item, index) => {
+            const mappedItems = items.map((item, index) => {
               // We transform the absolute URL into a relative URL to
               // leverage Next's preloading.
               const a = document.createElement('a')
               a.href = item.url
 
-              const hash = a.hash === '#content-wrapper' || a.hash === '#header' ? '' : a.hash
+              const hash = a.hash === '#article-title' ? '' : a.hash
+
+              if (item.hierarchy?.lvl0 && !item.hierarchy?.lvl1) {
+                item.hierarchy.lvl1 = '点击进入文章阅读 - ' + item.hierarchy.lvl0
+                item.type = 'lvl1'
+              }
 
               if (item.hierarchy?.lvl0) {
                 item.hierarchy.lvl0 = item.hierarchy.lvl0.replace(/&amp;/g, '&')
@@ -32,24 +37,27 @@
               return {
                 ...item,
                 url: `${a.pathname}${hash}`,
-                __is_result: () => true,
-                __is_parent: () => item.type === 'lvl1' && items.length > 1 && index === 0,
-                __is_child: () =>
+                __is_result: true,
+                __is_parent: (item.type === 'lvl1' && items.length > 1 && index === 0),
+                __is_child: (
                   item.type !== 'lvl1' &&
                   items.length > 1 &&
                   items[0].type === 'lvl1' &&
-                  index !== 0,
-                __is_first: () => index === 1,
-                __is_last: () => index === items.length - 1 && index !== 0,
+                  index !== 0),
+                __is_first: index === 1,
+                __is_last: (index === items.length - 1 && index !== 0),
               }
             })
+            console.log(mappedItems);
+            debugger
+            return mappedItems;
           },
           hitComponent: ({ hit, children }) => {
-            const className = `${(hit.__is_result && hit.__is_result()) ? 'DocSearch-Hit--Result ': ''}` +
-                              `${(hit.__is_parent && hit.__is_parent()) ? 'DocSearch-Hit--Parent ': ''}` +
-                              `${(hit.__is_first && hit.__is_first()) ? 'DocSearch-Hit--FirstChild ': ''}` +
-                              `${(hit.__is_last && hit.__is_last()) ? 'DocSearch-Hit--LastChild ': ''}` +
-                              `${(hit.__is_child && hit.__is_child()) ? 'DocSearch-Hit--Child ': ''}`
+            const className = `${hit.__is_result ? 'DocSearch-Hit--Result ': ''}` +
+                              `${hit.__is_parent ? 'DocSearch-Hit--Parent ': ''}` +
+                              `${hit.__is_first ? 'DocSearch-Hit--FirstChild ': ''}` +
+                              `${hit.__is_last ? 'DocSearch-Hit--LastChild ': ''}` +
+                              `${hit.__is_child ? 'DocSearch-Hit--Child ': ''}`
             return {
               $$typeof: children.$$typeof,
               constructor: undefined,

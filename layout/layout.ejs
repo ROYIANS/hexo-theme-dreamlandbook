@@ -10,7 +10,7 @@
 </main>
 <%- partial('_partial/footer', { cache: true }) %>
 <div class="fixed right-4 bottom-10 z-100 grid grid-cols-1 gap-y-2 justify-center items-center font-normal text-sm text-center">
-    <span title="<%= _p('go_top') %>" class="p-4 bg-gray-100 dark:bg-black w-5 h-5 rounded-sm cursor-pointer flex justify-center items-center" id="go-top">
+    <span title="<%= _p('go_top') %>" class="opacity-0 p-4 bg-gray-100 dark:bg-black w-5 h-5 rounded-sm cursor-pointer flex justify-center items-center" id="go-top">
       <i class="ri-arrow-up-line"></i>
     </span>
     <% if (theme.translate && theme.translate.enable) { %>

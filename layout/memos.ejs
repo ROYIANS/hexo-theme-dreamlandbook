@@ -18,7 +18,7 @@
                     <img class="w-full h-full rounded object-cover no_fancy" src="<%= theme.avatar %>" alt="<%= config.author %>">
                 </div>
                 <div class="pl-2">
-                    <p class="font-bold text-base" style="color: var(--roy-main)"><%= config.author %></p>
+                    <p class="font-bold text-base" style="color: var(--roy-theme)"><%= config.author %></p>
                     <p class="time text-xs text-gray-400 pt-2">14:25</p>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                             <img class="w-full h-full rounded object-cover no_fancy" src="<%= theme.avatar %>" alt="${item.creatorName}">
                         </div>
                         <div class="pl-2">
-                            <p class="font-bold text-base" style="color: var(--roy-main)">${item.creatorName}</p>
+                            <p class="font-bold text-base" style="color: var(--roy-theme)">${item.creatorName}</p>
                             <p class="time text-xs text-gray-400 pt-2">${new Date(parseInt(item.createdTs) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ')}</p>
                         </div>
                     </div>

@@ -393,14 +393,13 @@
 }
 
 .DocSearch-Hit[aria-selected=true] .DocSearch-Hit--Result .DocSearch-Hit-path {
-  --tw-bg-opacity: 1;
-  background-color: rgb(56 189 248/var(--tw-bg-opacity));
+  background-color: var(--theme-primary-color-600);
   --tw-text-opacity: 1;
   color: rgb(255 255 255/var(--tw-text-opacity))
 }
 
 :is(.dark .DocSearch-Hit[aria-selected=true] .DocSearch-Hit--Result .DocSearch-Hit-path) {
-  background-color: #38bdf880
+  background-color: var(--theme-primary-color-darker-200)
 }
 
 .DocSearch-Hit[aria-selected=true] .DocSearch-Hit--Result .DocSearch-Hit-title {
@@ -476,13 +475,12 @@
 }
 
 .DocSearch-Hit[aria-selected=true] .DocSearch-Hit--Result {
-  --tw-bg-opacity: 1;
-  background-color: rgb(14 165 233/var(--tw-bg-opacity))
+  background-color: var(--roy-theme)
 }
 
 :is(.dark .DocSearch-Hit[aria-selected=true] .DocSearch-Hit--Result) {
   --tw-bg-opacity: 1;
-  background-color: rgb(2 132 199/var(--tw-bg-opacity))
+  background-color: var(--roy-theme)
 }
 
 .DocSearch-Hit--FirstChild:before {
@@ -497,10 +495,10 @@
   background: none;
   border-bottom-width: 2px;
   --tw-border-opacity: 1;
-  border-color: rgb(125 211 252/var(--tw-border-opacity));
+  border-color: var(--theme-primary-color-200);
   font-weight: 600;
   --tw-text-opacity: 1;
-  color: rgb(2 132 199/var(--tw-text-opacity))
+  color: var(--roy-theme)
 }
 
 :is(.dark .DocSearch-Hits mark) {
@@ -629,7 +627,6 @@
 }
 
 :is(.dark .DocSearch-NoResults-Prefill-List ul) {
-  --tw-border-opacity: 1;
   border-color: rgb(51 65 85/var(--tw-border-opacity));
   background-color: #3341554d
 }
@@ -677,13 +674,11 @@
 
 .DocSearch-NoResults-Prefill-List + .DocSearch-Help a {
   font-weight: 600;
-  --tw-text-opacity: 1;
-  color: rgb(14 165 233/var(--tw-text-opacity))
+  color: var(--roy-theme)
 }
 
 :is(.dark .DocSearch-NoResults-Prefill-List+.DocSearch-Help a) {
-  --tw-text-opacity: 1;
-  color: rgb(56 189 248/var(--tw-text-opacity))
+  color: var(--theme-primary-color-600);
 }
 
 .DocSearch-Hit-action [title="Remove this search from favorites"], .DocSearch-Hit-action [title="Remove this search from history"], .DocSearch-Hit-action [title="Save this search"] {

@@ -143,7 +143,7 @@ img.tk-avatar-img {
 }
 
 .el-input__inner:focus {
-  border: 1px solid var(--roy-main) !important;
+  border: 1px solid var(--roy-theme) !important;
 }
 
 /* 评论输入框 */
@@ -232,13 +232,13 @@ img.tk-avatar-img {
 /* 预览按钮 */
 .el-button {
   background-color: var(--roy-fontcolor) !important;
-  border: 0px solid var(--roy-main) !important;
+  border: 0px solid var(--roy-theme) !important;
   color: var(--roy-background) !important;
   border-radius: 8px !important;
 }
 
 .el-button:hover {
-  background: var(--roy-main) !important;
+  background: var(--roy-theme) !important;
   color: var(--roy-white) !important;
 }
 

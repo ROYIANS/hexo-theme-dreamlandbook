@@ -1,16 +1,32 @@
+# Site Info
+site:
+  theme_color: '#009688' # 网站主题色，例如 theme_color: '#009688'
+
 # Header
 nav:
-  留言: /comments
-  说说: /memos
-  标签: /tags
-  分类: /categories
-  友链: /links
+  - title: 留言
+    icon: ri-message-3-fill
+    url: /comments
+  - title: 说说
+    icon: ri-instagram-fill
+    url: /memos
+  - title: 标签
+    icon: ri-price-tag-3-fill
+    url: /tags
+  - title: 分类
+    icon: ri-apps-2-fill
+    url: /categories
+  - title: 友链
+    icon: ri-emotion-happy-fill
+    url: /links
 
 # Algolia search
 algolia_search:
   enable: true
   hits:
     per_page: 6
+
+flow_bg: true
 
 # Conversion between Traditional and Simplified Chinese (簡繁轉換)
 translate:
