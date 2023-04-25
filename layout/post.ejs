@@ -11,26 +11,47 @@
         <div class="pt-4 md:pt-6">
             <h1 id="article-title" class="heti--serif text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
                 <span><%- page.title %></span>
-                <span class="text-xs opacity-50 font-normal"><%- page.author || config.author %></span>
             </h1>
-            <div>
-                <section class="flex items-center gap-3 text-sm">
-                    <time><%- moment(page.updated, "YYYYMMDD").fromNow() %></time>
-                    <span class="text-gray-400">·</span>
-                    <span><%= min2read(page.content) %> min</span>
-                    <span class="text-gray-400">·</span>
-                    <span><%= wordcount(page.content) %> words</span>
-                    <% if(page.comment){ %>
-                        <span class="text-gray-400">·</span>
-                        <span class="post-meta-commentcount" title="评论数">
-                            <i class="fa-solid fa-message"></i>
-                            <a href="#twikoo">
-                                <span id="twikoo-count"><i
-                                            class="ri-loader-4-line animate-spin inline-block"></i></span> comment
-                            </a>
+            <div class="grid grid-cols-4 gap-2 text-xs">
+                <div class="col-span-1 flex flex-col justify-center md:flex-row">
+                    <span title="View all posts by <%= page.author || config.author %>" rel="author" class="font-bold">
+                        <%= page.author || config.author %>
+                    </span>
+                    <span class="hidden pr-2 md:block"></span>
+                    <span>
+                        <span title="<%- moment(page.updated).format("HH:mm") %>" rel="bookmark">
+                            <i class="ri-time-fill"></i>
+                            <time datetime="<%- moment(page.updated).format() %>"><%- moment(page.updated).format("YYYY-MM-DD") %></time>
                         </span>
-                    <% } %>
-                </section>
+                    </span>
+                </div>
+                <div class="col-span-1 flex flex-col justify-center md:flex-row">
+                    <span>文章热度</span>
+                    <span class="hidden pr-2 md:block"></span>
+                    <span>
+                        <i class="ri-fire-fill"></i>
+                        <span id="busuanzi_value_page_pv">
+                            <i class="ri-loader-4-line animate-spin inline-block"></i>
+                        </span>
+                        <span>℃</span>
+                    </span>
+                </div>
+                <div class="col-span-1 flex flex-col justify-center md:flex-row">
+                    <span>本文共计</span>
+                    <span class="hidden pr-2 md:block"></span>
+                    <span>
+                        <i class="ri-text"></i>
+                        <%= wordcount(page.content) %> 字
+                    </span>
+                </div>
+                <div class="col-span-1 flex flex-col justify-center md:flex-row">
+                    <span>预计阅读</span>
+                    <span class="hidden pr-2 md:block"></span>
+                    <span>
+                        <i class="ri-book-open-fill"></i>
+                        <%= min2read(page.content) %> 分钟
+                    </span>
+                </div>
             </div>
         </div>
     </header>
@@ -154,6 +175,7 @@
 </section>
 <!-- js inspect -->
 <%- js('lib/clipboard.min') %>
+<%- partial('_plugins/code_unfold') %>
 <%- partial('_plugins/mathjax') %>
 <%- partial('_plugins/mermaid') %>
 <%- partial('_plugins/fancybox') %>

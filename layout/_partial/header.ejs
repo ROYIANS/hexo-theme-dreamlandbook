@@ -15,7 +15,7 @@
             <div class="flex-1"></div>
             <div class="flex items-center gap-3">
                 <% for (var i of theme.nav){ %>
-                    <a class="no-a-hover hidden sm:flex text-sm py-0.5 px-2 hover:bg-opacity-20 hover:bg-gray-300 dark:hover:bg-opacity-20 dark:hover:bg-zinc-600" href="<%- url_for(i.url) %>">
+                    <a class="no-a-hover hidden md:flex text-sm py-0.5 px-2 hover:bg-opacity-20 hover:bg-gray-300 dark:hover:bg-opacity-20 dark:hover:bg-zinc-600" href="<%- url_for(i.url) %>">
                         <% if (i.icon) { %>
                         <i class="<%= i.icon %> mr-2"></i>
                         <% } %>
@@ -38,7 +38,7 @@
                     </a>
                 <% } %>
             </div>
-            <div class="flex items-center justify-center gap-3 ml-3 sm:hidden rounded bg-opacity-50 hover:bg-gray-200 dark:hover:bg-zinc-700 px-1.5">
+            <div class="flex items-center justify-center gap-3 ml-3 md:hidden rounded bg-opacity-50 hover:bg-gray-200 dark:hover:bg-zinc-700 px-1.5">
                 <span aria-hidden="true" role="img" id="open-menu">
                   <i class="ri-menu-4-fill"></i>
                 </span>
@@ -49,7 +49,7 @@
         </nav>
     </div>
 </header>
-<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+<div id="menu-panel" class="h-0 overflow-hidden md:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
     <div id="menu-content"
          class="relative z-20 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300"
          style="background: var(--grain-square-white-opacity-blend)">

@@ -91,11 +91,9 @@ const registerCopyCode = () => {
       "<i class=\"ri-file-copy-line\" title=\"复制代码\"></i>"
     );
     const leftOffset = 25;
-    // left
-    const left = $(this).width() - leftOffset;
     // set style
     $(copyIcon).css("position", "absolute");
-    $(copyIcon).css("left", `${left}px`);
+    $(copyIcon).css("right", 'calc(1em + 10px)');
     $(copyIcon).css("top", "15px");
     $(copyIcon).css("cursor", "pointer");
     $(copyIcon).css("font-style", "normal");

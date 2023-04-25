@@ -1,0 +1,162 @@
+<script>
+  var CODE_MAX_HEIGHT = 500;
+  var containers = [];
+  // 展开
+  $('body').on('click', '.js_unfold_code_btn', function () {
+    $(this).closest('.js_highlight_container').addClass('on');
+    $(this).css('display', 'none')
+    $(this).next().css('display', 'flex')
+    $(this).closest('.highlight-footer').css('width', '3rem')
+    $(this).closest('.highlight-footer').css('opacity', '0.7')
+    $(this).closest('.highlight-footer').css('bottom', '0.5em')
+  });
+  // 收起
+  $('body').on('click', '.js_retract_code_btn', function () {
+    var $container = $(this).parent().parent().removeClass('on');
+    $(this).css('display', 'none')
+    $(this).prev().css('display', 'flex')
+    $(this).closest('.highlight-footer').css('width', 'calc(100% - 1em)')
+    $(this).closest('.highlight-footer').css('opacity', '1')
+    $(this).closest('.highlight-footer').css('bottom', '0')
+    var winTop = $(window).scrollTop();
+    var offsetTop = $container.offset().top;
+    $(this).css('top', 0);
+    if (winTop > offsetTop) {
+      // 设置滚动条位置
+      $('body, html').animate({
+        scrollTop: $container.offset().top - CODE_MAX_HEIGHT
+      }, 600);
+    }
+  });
+
+  // 添加隐藏容器
+  function addCodeWrap($node) {
+    var $container = $node.wrap(
+      '<div class="js_highlight_container highlight-container"><div class="highlight-wrap"></div></div>').closest(
+      '.js_highlight_container');
+    // 底部 "展开代码" 与 侧边栏 "收起代码"
+    var $btn = $(
+      `
+    <div class="highlight-footer">
+      <a class="js_unfold_code_btn show-btn" href="javascript:;">展开代码<i class="ri-skip-down-line"></i></a>
+      <a class="js_retract_code_btn hide-btn" style="display: none" href="javascript:;"><i class="ri-skip-up-line"></i></a>
+    </div>
+  `
+    );
+    $container.append($btn);
+    return $container;
+  };
+
+  function codeUnfold() {
+    $('.highlight').each(function () {
+      // 防止重复渲染
+      if (this.__render__ === true) {
+        return true;
+      }
+      this.__render__ = true;
+      var $this = $(this);
+      var height = $(this).outerHeight();
+      if (height > CODE_MAX_HEIGHT) {
+        // 添加展开&收起容器
+        var $container = addCodeWrap($this, height);
+        containers.push({
+          $container,
+          height,
+          $hide: $container.find('.js_retract_code_btn'),
+          hasHorizontalScrollbar: this.scrollWidth > this.offsetWidth,
+        });
+      }
+    });
+  };
+
+  $(document).ready(() => {
+    codeUnfold();
+  })
+
+</script>
+
+<style>
+  .highlight-container {
+    position: relative;
+    background-color: transparent;
+  }
+
+  .highlight-container.on .hide-btn {
+    display: flex;
+  }
+
+  .highlight-container.on .highlight-wrap {
+    max-height: none;
+  }
+
+  .highlight-container .highlight-wrap {
+    overflow: hidden;
+    max-height: 500px;
+  }
+
+  .dark .highlight-container .highlight-footer {
+    background: var(--theme-primary-color-darker-400);
+  }
+
+  .highlight-container .highlight-footer {
+    background: var(--theme-primary-color);
+    position: absolute;
+    margin: 0 0.5em;
+    width: calc(100% - 1em);
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .highlight-container .show-btn, .highlight-container .hide-btn {
+    font-size: 0.8rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .highlight-container .show-btn:hover, .highlight-container .hide-btn:hover {
+    text-decoration: none;
+  }
+
+  .highlight-container .fa-angle-up,
+  .highlight-container .fa-angle-down {
+    font-style: normal;
+    color: #fff;
+  }
+
+  .highlight-container .fa-angle-up:before {
+    content: "\f106";
+  }
+
+  .highlight-container .fa-angle-down:before {
+    content: "\f107";
+    margin-left: 0.5em;
+  }
+
+  .highlight-container .js_unfold_code_btn,
+  .highlight-container .js_retract_code_btn {
+    width: 100%;
+    height: 100%;
+    border-bottom: none !important;
+  }
+
+  .highlight-container .js_unfold_code_btn i,
+  .highlight-container .js_retract_code_btn i {
+    font-style: normal;
+  }
+
+  .highlight-container .js_unfold_code_btn:hover,
+  .highlight-container .js_retract_code_btn:hover {
+    border-bottom-color: transparent !important;
+  }
+
+  .highlight-container + blockquote {
+    margin-top: 0.5em;
+  }
+</style>

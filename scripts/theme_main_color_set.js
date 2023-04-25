@@ -15,5 +15,6 @@ hexo.extend.helper.register('theme_main_color_set', function () {
   let colorSet = pick_color.getThemeCluster(themeMainColor.replace('#', ''))
   colorSet.push(`--roy-theme: ${themeMainColor};`)
   colorSet.push(`--roy-theme-op: ${themeMainColor}23;`)
+  colorSet.push(`--roy-theme-min: ${themeMainColor}10;`)
   return `<style>:root{${colorSet.join('\n')}}</style>`
 })

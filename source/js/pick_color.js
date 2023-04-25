@@ -43,7 +43,7 @@ const getThemeCluster = (theme) => {
     clusters.push(`--theme-primary-color${i === 0 ? '' : '-' + Number(i * 100)}: ${generatedTintColor};`)
   }
 
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 10; i++) {
     const generatedShadeColor = shadeColor(theme, Number((i / 10).toFixed(2)))
     clusters.push(`--theme-primary-color-darker-${Number(i * 100)}: ${generatedShadeColor};`)
   }
