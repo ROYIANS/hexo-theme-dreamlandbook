@@ -51,12 +51,12 @@
 </header>
 <div id="menu-panel" class="h-0 overflow-hidden md:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
     <div id="menu-content"
-         class="relative z-20 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300"
+         class="relative z-20 px-6 md:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300"
          style="background: var(--grain-square-white-opacity-blend)">
-        <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+        <ul class="nav flex flex-col md:flex-row text-sm font-medium">
             <% for (var i of theme.nav){ %>
-                <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-                    <a class="flex h-12 sm:h-auto items-center" href="<%- url_for(i.url) %>">
+                <li class="nav-portfolio md:mx-2 border-b md:border-0 border-black/5 last:border-0 hover:text-main">
+                    <a class="flex h-12 md:h-auto items-center" href="<%- url_for(i.url) %>">
                         <% if (i.icon) { %>
                             <i class="<%= i.icon %> mr-2"></i>
                         <% } %>

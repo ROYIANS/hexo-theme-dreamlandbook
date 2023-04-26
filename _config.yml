@@ -28,6 +28,10 @@ algolia_search:
 
 flow_bg: true
 
+post_abstract:
+  enable: true
+  key: semb5AhNssX2qdKJZQek
+
 # Conversion between Traditional and Simplified Chinese (簡繁轉換)
 translate:
   enable: true
