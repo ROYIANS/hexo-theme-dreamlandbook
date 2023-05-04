@@ -10,12 +10,12 @@ nav:
   - title: 说说
     icon: ri-instagram-fill
     url: /memos
+  - title: 书架
+    icon: ri-book-2-fill
+    url: /books
   - title: 标签
     icon: ri-price-tag-3-fill
     url: /tags
-  - title: 分类
-    icon: ri-apps-2-fill
-    url: /categories
   - title: 友链
     icon: ri-emotion-happy-fill
     url: /links

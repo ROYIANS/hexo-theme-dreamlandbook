@@ -5,6 +5,8 @@ tags:
   title: 標籤
 category:
   title: 分類
+books:
+  title: 書架
 search:
   title: 快速搜索
 date_suffix:

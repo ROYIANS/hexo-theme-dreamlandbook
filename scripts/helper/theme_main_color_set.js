@@ -5,7 +5,7 @@
 
 'use strict'
 
-const pick_color = require('../source/js/pick_color')
+const pick_color = require('../../source/js/pick_color')
 
 hexo.extend.helper.register('theme_main_color_set', function () {
   const themeMainColor = hexo.theme && hexo.theme.config && hexo.theme.config.site && hexo.theme.config.site.theme_color

@@ -5,7 +5,7 @@
 
 'use strict'
 
-const { version } = require('../package.json')
+const { version } = require('../../package.json')
 const path = require('path')
 
 hexo.extend.filter.register('before_generate', () => {

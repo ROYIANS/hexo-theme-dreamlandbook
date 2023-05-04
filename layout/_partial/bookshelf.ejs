@@ -1,0 +1,91 @@
+<% if (books) { %>
+    <div class="bookshelf">
+        <% books.forEach(book => { %>
+            <% const isTilted = Math.random() <= 0.12 %>
+            <% const color = random_chinese_color() %>
+            <% if (isTilted) { %>
+                <div class="book-tilted">
+                    <div class="book heti--vertical" style="<%= `background-color: ${color.hex}; ${color.fontColor ? `color: ${color.fontColor}` : ''}` %>">
+                        <h2>
+                            <a href="<%= url_for(book.path) %>" title="<%= book.title %>"><%= book.title %></a>
+                        </h2>
+                        <% if (book.subTitle) { %>
+                            <h3><%= book.subTitle %></h3>
+                        <% } %>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="book heti--vertical" style="<%= `background-color: ${color.hex}; ${color.fontColor ? `color: ${color.fontColor}` : ''}` %>">
+                    <h2>
+                        <a href="<%= url_for(book.path) %>" title="<%= book.title %>"><%= book.title %></a>
+                    </h2>
+                    <% if (book.subTitle) { %>
+                        <h3><%= book.subTitle %></h3>
+                    <% } %>
+                </div>
+            <% } %>
+        <% }); %>
+    </div>
+
+    <style>
+      .bookshelf {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        border: 10px #A87328 solid;
+        overflow: hidden;
+        background-image: linear-gradient(#eebf7e, #f3c98f 220px, #b87e2c 220px, #b87e2c 222px, #A87328 222px, #A87328 228px, #986824 228px, #986824 230px);
+        background-size: 10px 230px;
+        box-shadow: 0 1000px 0 400px #7A7668;
+      }
+
+      .dark .bookshelf {
+        border: 10px #A87328 solid;
+        background-image: linear-gradient(#241909, #2c1e0b 220px, #b87e2c 220px, #b87e2c 222px, #A87328 222px, #A87328 228px, #986824 228px, #986824 230px);
+      }
+
+      .book {
+        height: 200px;
+        width: 40px;
+        float: left;
+        color: white;
+        font-size: 0.9em;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        transition: transform 0.4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .book-tilted {
+        float: left;
+        width: 74px;
+      }
+
+      .book-tilted > .book {
+        transform: translateY(-3px) translateX(15px) rotate(9deg) ;
+      }
+
+      .book:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      .book a:hover {
+        color: inherit;
+      }
+
+      .book h2 {
+        padding: 0;
+        font-size: 1em;
+        text-align: center;
+      }
+
+      .book h3 {
+        padding: 0;
+        font-size: 0.7em;
+        text-align: center;
+      }
+    </style>
+<% } %>

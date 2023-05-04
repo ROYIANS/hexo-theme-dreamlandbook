@@ -22,25 +22,41 @@
     <% } %>
     <% var last_month = ''; %>
     <% var last_year = ''; %>
+    <% var stickeyTop = false; %>
     <% page.posts.each(function (post) { %>
         <% var cur_month = `${post.date.month() + 1}`.padStart(2, '0'); %>
         <% var cur_year = post.date.year(); %>
         <% var cur_date = post.date.date(); %>
-        <% if(last_month !== cur_month || last_year !== cur_year) { %>
+        <% var sticky = post.sticky; %>
+        <% if(last_month !== cur_month || last_year !== cur_year || (sticky && !stickeyTop)) { %>
             <div class="relative pointer-events-none">
-                <span class="heti--serif text-lg opacity-10 absolute -left-2 md:-left-4"><%- cur_year %>.<%- cur_month %></span>
+                <span class="heti--serif text-lg opacity-10 absolute -left-2 md:-left-4">
+                    <% if (sticky) { %>
+                        <% stickeyTop = true %>
+                        Sticky
+                    <% } else { %>
+                        <%- cur_year %>.<%- cur_month %>
+                    <% } %>
+                </span>
             </div>
         <% last_month = cur_month; last_year = cur_year } %>
         <div class="grid grid-cols-12 gap-4">
             <section class="col-span-2 text-gray-400 my-1 text-sm time whitespace-nowrap">
                 <ul class="text-right">
-                    <% post.categories.data.forEach(categories => { %>
+                    <% if (post.book) { %>
                         <li class="leading-relaxed overflow-ellipsis overflow-hidden">
-                            <a href="<%= categories.path %>" title="<%= categories.name %>">
-                                <%= categories.name %>
+                            <a href="<%= url_for(post.book.path) %>" title="<%= post.book.title %>">
+                                <%= post.book.title %>
                             </a>
                         </li>
-                    <% }) %>
+                    <% } %>
+                    <!--                    <% post.categories.data.forEach(categories => { %>-->
+                    <!--                        <li class="leading-relaxed overflow-ellipsis overflow-hidden">-->
+                    <!--                            <a href="<%= categories.path %>" title="<%= categories.name %>">-->
+                    <!--                                <%= categories.name %>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                    <% }) %>-->
                 </ul>
             </section>
             <section class="col-span-2 heti--serif text-4xl text-center">
@@ -54,15 +70,25 @@
                 </header>
                 <section class="text-gray-400 my-1 text-sm time">
                     <p class="text-xs flex flex-wrap items-center whitespace-nowrap overflow-hidden">
+                        <% if (post.sticky) { %>
+                            <span class="opacity-70 mr-0.5">
+                                [<i class="ri-skip-up-line"></i>顶]
+                            </span>
+                        <% } %>
                         <span class=""><%= post.author || config.author %></span>
                         <span class="text-gray px-1">·</span>
                         <span class='opacity-50 before:opacity-70'><%= min2read(post.content) %>min</span>
                         <span class="text-gray px-1">·</span>
-                        <% post.tags.data.forEach(tag => { %>
-                            <span class="bg-gray-100 dark:bg-black px-1.5 rounded-sm flex ml-1"><%= tag.name %></span>
+                        <% post.categories.data.forEach(category => { %>
+                            <span class="bg-gray-100 dark:bg-black px-1.5 rounded-sm flex ml-1">
+                                <%= category.name %>
+                            </span>
                         <% }) %>
+                        <!--                        <% post.tags.data.forEach(tag => { %>-->
+                        <!--                            <span class="bg-gray-100 dark:bg-black px-1.5 rounded-sm flex ml-1"><%= tag.name %></span>-->
+                        <!--                        <% }) %>-->
                     </p>
-                    <p class="line-clamp-4">
+                    <p class="line-clamp-4 mt-2 ml-5">
                         <% if (post.excerpt) { %>
                             <%= post.excerpt %>
                         <% } %>

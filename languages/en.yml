@@ -5,6 +5,8 @@ tags:
   title: Tags
 category:
   title: Categories
+books:
+  title: Books
 search:
   title: Quick Search
 date_suffix:

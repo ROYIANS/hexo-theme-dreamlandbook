@@ -5,7 +5,7 @@
 
 'use strict'
 
-const colorList = require('../source/lib/color.json')
+const colorList = require('../../source/lib/color.json')
 
 hexo.extend.helper.register('random_chinese_color', function () {
   const colorGroup = colorList[Math.floor(Math.random() * colorList.length)];
