@@ -7,6 +7,7 @@ category:
   title: 分类
 books:
   title: 书架
+  contents: 目录
 search:
   title: 快速搜索
 date_suffix:

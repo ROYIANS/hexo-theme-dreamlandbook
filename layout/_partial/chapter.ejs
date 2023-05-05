@@ -2,26 +2,31 @@
     <% const { chapters, articles } = book; %>
     <% chapters && chapters.length && chapters.forEach((chapter, index) => { %>
         <li class="book-chapter pt-5 <%= `book-chapter-${chapter.level}` %>">
-            <ul class="heti--serif relative pb-2">
-                <li><%= chapter.title %></li>
-                <li class="absolute -top-3 -left-2 opacity-30 text-2xl font-bold heti--sans"><%= index + 1 %></li>
+            <ul class="heti--serif relative py-3 text-2xl font-bold">
+                <li>
+                    <span class="mr-4">第 <%= index + 1 %> 章</span>
+                    <span><%= chapter.title %></span>
+                </li>
             </ul>
             <ul class="book-chapter-article">
                 <%- partial('chapter', {
                     book: {
+                        id: book.id,
                         chapters: chapter.chapters,
                         articles: chapter.articles
-                    }
+                    },
+                    firstIndex: firstIndex
                 }) %>
             </ul>
         </li>
     <% }); %>
-    <% articles && articles.length && articles.forEach((article, index) => { %>
-        <li class="book-article pl-5">
+    <% articles && articles.length && articles.forEach((article) => { %>
+        <% const curIndex = increase_step_counter(book.id).value() %>
+        <li class="heti--serif book-article ml-24 text-base my-2.5 font-light">
             <a href="<%= url_for(article.path) %>" title="<%= article.title %>">
-                <span><%= `${index + 1}`.padStart(3, '0') %></span>
-                <span class="px-2">//</span>
                 <span><%= article.title %></span>
+                <span class="px-2">/</span>
+                <span><%= `${curIndex}`.padStart(3, '0') %></span>
             </a>
         </li>
     <% }); %>

@@ -7,6 +7,7 @@ category:
   title: Categories
 books:
   title: Books
+  contents: CONTENTS
 search:
   title: Quick Search
 date_suffix:
