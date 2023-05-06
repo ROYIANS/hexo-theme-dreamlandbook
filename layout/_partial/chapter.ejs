@@ -1,11 +1,10 @@
 <% if (book) { %>
     <% const { chapters, articles } = book; %>
     <% chapters && chapters.length && chapters.forEach((chapter, index) => { %>
-        <li class="book-chapter pt-5 <%= `book-chapter-${chapter.level}` %>">
-            <ul class="heti--serif relative py-3 text-2xl">
+        <li class="book-chapter pt-5">
+            <ul class="heti--serif relative py-3 book-chapter-title">
                 <li>
-                    <span class="mr-4 font-bold">第 <%= index + 1 %> 章</span>
-                    <span><%= chapter.title %></span>
+                    <%- `<h${chapter.level}>${chapter.title}</h${chapter.level}>` %>
                 </li>
             </ul>
             <ul class="book-chapter-article">
@@ -21,7 +20,7 @@
     <% }); %>
     <% articles && articles.length && articles.forEach((article) => { %>
         <% const curIndex = increase_step_counter(book.id).value() %>
-        <li class="heti--serif book-article ml-24 text-base my-2.5 font-light">
+        <li class="heti--serif book-article text-base my-2.5 font-light">
             <a href="<%= url_for(article.path) %>" title="<%= article.title %>" class="flex justify-between">
                 <span><%= article.title %></span>
                 <span class="whitespace-nowrap">
@@ -31,4 +30,7 @@
             </a>
         </li>
     <% }); %>
+    <% if (!chapters.length && !articles.length) { %>
+        <li class="heti--serif text-base my-2.5 font-light opacity-70 text-center">空空如也...</li>
+    <% } %>
 <% } %>

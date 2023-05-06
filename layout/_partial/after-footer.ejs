@@ -2,6 +2,6 @@
 <% if (theme.translate && theme.translate.enable) { %>
     <%- js(theme.asset.translate) %>
 <% } %>
-<% if (theme.post_abstract && theme.post_abstract.enable) { %>
+<% if (theme.post_abstract && theme.post_abstract.enable && is_post()) { %>
     <%- partial('_plugins/post_abstract', { cache: true }) %>
 <% } %>

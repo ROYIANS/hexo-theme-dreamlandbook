@@ -37,3 +37,7 @@ yarn add autoprefixer postcss postcss-import postcss-load-config tailwindcss tai
 theme: dreamlandbook
 ...
 ```
+
+## 操作手册（wiki）
+
+[挖坑中...待完善](https://blog.vidorra.life/books/hexo-theme-dreamlandbook/)

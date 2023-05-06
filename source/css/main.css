@@ -2,6 +2,7 @@
 @import "toast.css";
 @import "tk_comment.css";
 @import "post.css";
+@import "book_chapter.css";
 
 @tailwind base;
 @tailwind components;

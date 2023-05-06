@@ -1,0 +1,19 @@
+.book-chapter {
+  /* */
+}
+
+.book-chapter h1 {
+  @apply text-2xl font-black;
+}
+
+.book-chapter h2 {
+  @apply text-xl font-bold;
+}
+
+.book-chapter h3 {
+  @apply text-lg font-bold;
+}
+
+.book-chapter h4, .book-chapter h5, .book-chapter h6 {
+  @apply text-base;
+}

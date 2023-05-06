@@ -1,4 +1,11 @@
 <% if (!page.isCatalog) { %>
+    <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+        <div class="pt-4 md:pt-6">
+            <h1 id="article-title" class="heti--serif font-black relative text-center text-[2rem] leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+                <%= _p('books.title') %>
+            </h1>
+        </div>
+    </header>
     <section class="px-6 max-w-6xl mx-auto md:px-0">
         <%- partial('_partial/bookshelf', { books: page.books }) %>
     </section>
@@ -9,14 +16,14 @@
         <!-- header -->
         <header class="overflow-hidden pt-6 pb-6 md:pt-12">
             <div class="pt-4 md:pt-6">
-                <h1 id="article-title" class="heti--serif relative text-center text-[2rem] leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+                <h1 id="article-title" class="heti--serif relative text-center text-[2rem] font-black leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
                     <%= page.book.title %>
                     <span class="absolute w-full top-0 left-0 opacity-20 -z-1">CONTENTS</span>
                 </h1>
             </div>
         </header>
         <ul class="w-full">
-            <li class="text-base text-left p-5"></li>
+            <li class="text-left p-5"></li>
             <%- partial('_partial/chapter', { book: page.book }) %>
             <% increase_step_counter(page.book.id).clear() %>
         </ul>

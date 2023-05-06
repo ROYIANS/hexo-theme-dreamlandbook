@@ -8,6 +8,7 @@ category:
 books:
   title: 書架
   contents: 目錄
+  uncategorized: :( 未分類
 search:
   title: 快速搜索
 date_suffix:

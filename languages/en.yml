@@ -8,6 +8,7 @@ category:
 books:
   title: Books
   contents: CONTENTS
+  uncategorized: :( Uncategorized
 search:
   title: Quick Search
 date_suffix:

@@ -191,12 +191,12 @@ const addCopyright = () => {
   }
 }
 
-const registerSearchEvent = () => {
-  const search = document.getElementById('algolia_search')
-  search.onclick = () => {}
+const showThemeInfo = () => {
+  console.log('%c╔╦╗┬─┐┌─┐┌─┐┌┬┐┬  ┌─┐┌┐┌┌┬┐╔╗ ┌─┐┌─┐┬┌─\n ║║├┬┘├┤ ├─┤││││  ├─┤│││ ││╠╩╗│ ││ │├┴┐\n═╩╝┴└─└─┘┴ ┴┴ ┴┴─┘┴ ┴┘└┘─┴┘╚═╝└─┘└─┘┴ ┴', 'background: #009688;color: #fff;font-weight: bold', `hexo-theme-dreamlandbook® v1.0.0 contributed by LittleDreamLand﹢.`)
 }
 
 $(document).ready(function () {
+  showThemeInfo();
   registerMobileMenu();
   registerGoTop();
   preventTouchGesture()
