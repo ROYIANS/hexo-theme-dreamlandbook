@@ -17,7 +17,7 @@
   font-style: normal;
 }
 
-.post-content .fancybox-img {
+.album .fancybox-img {
   @apply block w-4/5 px-4 mx-auto bg-white dark:bg-zinc-800 relative;
   border: none!important;
   border-block-end: 0!important;
@@ -26,19 +26,19 @@
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
 }
 
-.post-content img {
+.album img {
   @apply border border-border-color border-solid dark:border-border-color-dark mx-auto;
 }
 
-.dark .post-content img {
+.dark .album img {
   filter: brightness(.5);
 }
 
-.post-content .fancybox-img {
+.album .fancybox-img {
   @apply relative;
 }
 
-.post-content .fancybox-img::before {
+.album .fancybox-img::before {
   content: "";
   width: 50%;
   height: 20px;

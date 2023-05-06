@@ -20,7 +20,13 @@ module.exports = {
         'border-color': {
           DEFAULT: '#eee',
           dark: '#262626'
-        }
+        },
+        'theme-blue': '#0084FF',
+        'theme-red': '#FF3842',
+        'theme-pink': '#d44040',
+        'theme-green': '#3e9f50',
+        'theme-yellow': '#ffc93e',
+        'theme-orange': '#ff953e'
       },
       minHeight: {
         '0': '0',

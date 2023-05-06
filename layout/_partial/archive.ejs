@@ -33,7 +33,6 @@
                 <span class="heti--serif text-lg opacity-10 absolute -left-2 md:-left-4">
                     <% if (sticky) { %>
                         <% stickeyTop = true %>
-                        Sticky
                     <% } else { %>
                         <%- cur_year %>.<%- cur_month %>
                     <% } %>
@@ -71,7 +70,7 @@
                 <section class="text-gray-400 my-1 text-sm time">
                     <p class="text-xs flex flex-wrap items-center whitespace-nowrap overflow-hidden">
                         <% if (post.sticky) { %>
-                            <span class="opacity-70 mr-0.5">
+                            <span class="mr-2 text-theme-orange">
                                 [<i class="ri-skip-up-line"></i>顶]
                             </span>
                         <% } %>

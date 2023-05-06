@@ -2,14 +2,17 @@
     <div class="grid grid-cols-2 md:grid-cols-5">
         <% books.forEach(book => { %>
             <% const color = random_chinese_color() %>
+            <% const bookColor = book.background || color.hex %>
+            <% const bookCover = book.cover || false %>
+            <% const fontColor = book.background ? book.fontColor : color.fontColor %>
             <a class="book" href="<%= url_for(book.path) %>" title="点击阅读：<%= book.title %>">
-                <div class="book-back book-inner" style="<%= `background-color: ${color.hex};` %>"></div>
+                <div class="book-back book-inner" style="<%= `background-color: ${bookColor}; ${bookCover ? `background-image: url('${bookCover}')` : ''}` %>"></div>
                 <div class="book-pages book-inner"></div>
                 <div class="book-pages book-inner"></div>
                 <div class="book-pages book-inner"></div>
                 <div class="book-pages book-inner"></div>
-                <div class="book-cover book-inner" style="<%= `background-color: ${color.hex};` %>">
-                    <h2 class="inline-flex flex-wrap justify-start" style="<%= `${color.fontColor ? `color: ${color.fontColor}` : ''};` %>">
+                <div class="book-cover book-inner" style="<%= `background-color: ${bookColor}; ${bookCover ? `background-image: url('${bookCover}')` : ''}` %>">
+                    <h2 class="inline-flex flex-wrap justify-start" style="<%= `${fontColor ? `color: ${fontColor}` : ''};` %>">
                         <span class="text-sm book-author w-full"><%= book.author || config.author %></span>
                         <span class="text-base font-bold"><%= book.title %></span>
                     </h2>
@@ -26,10 +29,10 @@
         margin-right: auto;
         margin-top: 48px;
         position: relative;
-        perspective: 1000px;
         cursor: pointer;
         box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 0 3px 3px 0;
+        perspective: 1000px;
       }
 
       .book-image {
@@ -111,6 +114,12 @@
         border-radius: 0 3px 3px 0;
       }
 
+      .book-back, .book-cover {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
       .book-back,
       .book-pages {
         right: 0;
@@ -154,7 +163,7 @@
         box-shadow: inset -2px 0 1px rgba(0, 0, 0, 0.075);
       }
       .book:hover .book-cover {
-        transform: rotateY(-40deg);
+        transform: rotateY(-40deg) translateZ(10px);
         transform-timing-function: ease-out;
         transition-delay: 0s;
       }

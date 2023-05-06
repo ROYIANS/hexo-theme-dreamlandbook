@@ -420,11 +420,11 @@
 }
 
 .heti--serif {
-  font-family: "FZNewShuSong", "Noto Serif SC", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  font-family: "Noto Serif SC", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 }
 
 .heti--classic {
-  font-family: "FZNewShuSong", "Noto Serif SC", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  font-family: "Noto Serif SC", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 }
 
 .heti--classic h1, .heti--classic h2, .heti--classic h3, .heti--classic h4, .heti--classic h5, .heti--classic h6 {
@@ -445,7 +445,7 @@
 }
 
 .heti--song {
-  font-family: "FZNewShuSong", "Noto Serif SC", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  font-family: "Noto Serif SC", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 }
 
 .heti--kai {
@@ -531,7 +531,7 @@
 }
 
 .heti--ancient, .heti--poetry {
-  font-family: "FZNewShuSong", "Noto Serif SC", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  font-family: "Noto Serif SC", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .heti--ancient h1, .heti--ancient h2, .heti--ancient h3, .heti--ancient h4, .heti--ancient h5, .heti--ancient h6, .heti--poetry h1, .heti--poetry h2, .heti--poetry h3, .heti--poetry h4, .heti--poetry h5, .heti--poetry h6 {

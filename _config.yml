@@ -131,7 +131,4 @@ CDN:
 extends:
   head: # 在head中插入
     - <link href="/fonts/LDL/LDL.css" rel="stylesheet">
-    - <link rel="preconnect" href="https://fonts.googleapis.com">
-    - <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    - <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Serif+SC&display=swap" rel="stylesheet">
   body: # 在body中插入

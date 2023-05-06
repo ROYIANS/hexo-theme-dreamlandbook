@@ -24,8 +24,14 @@
   --roy-secondbg: #f1f3f8;
   --roy-shadow-black: 0 0 12px 4px rgba(0, 0, 0, .05);
   --style-border-dashed: 1px dashed var(--roy-theme-op);
-  --roy-black: #000;
   --wp--preset--color--custom-light-color: #828282;
+  --roy-black: #000;
+  --roy-blue: #0084FF;
+  --roy-red: #FF3842;
+  --roy-pink: #d44040;
+  --roy-green: #3e9f50;
+  --roy-yellow: #ffc93e;
+  --roy-orange: #ff953e;
 }
 
 html.dark {

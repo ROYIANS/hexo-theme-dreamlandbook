@@ -24,7 +24,7 @@ hexo.extend.helper.register('increase_step_counter', function (key, startIndex =
       return resCounter
     },
     clear: () => hexo.locals.set(key, function(){
-      return 0
+      return startIndex
     })
   }
 })
