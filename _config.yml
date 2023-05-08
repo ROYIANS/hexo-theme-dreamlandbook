@@ -4,15 +4,15 @@ site:
 
 # Header
 nav:
-  - title: 留言
-    icon: ri-message-3-fill
-    url: /comments
-  - title: 说说
-    icon: ri-instagram-fill
-    url: /memos
   - title: 书架
     icon: ri-book-2-fill
     url: /books
+  - title: 说说
+    icon: ri-instagram-fill
+    url: /memos
+  - title: 留言
+    icon: ri-message-3-fill
+    url: /comments
   - title: 标签
     icon: ri-price-tag-3-fill
     url: /tags
@@ -76,8 +76,9 @@ title_font:
   font_size: 3.5rem
 
 memos:
-  url: https://vidorra.life
+  url: https://memos.vidorra.life
   limit: 30
+  cover: /images/covers/tittle-tattle-cover.webp
 
 # links
 links:
@@ -131,4 +132,5 @@ CDN:
 extends:
   head: # 在head中插入
     - <link href="/fonts/LDL/LDL.css" rel="stylesheet">
+    - <meta name="baidu-site-verification" content="codeva-fCRpJWFFlr" />
   body: # 在body中插入

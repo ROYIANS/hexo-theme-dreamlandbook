@@ -19,8 +19,8 @@
 <% } %>
 <%
 var title = page.title;
-if (is_archive()) {
-    title = __('archive_a');
+if (is_archive() && !is_post()) {
+    title = __('archive');
     if (is_month()) {
         title += ': ' + page.year + '/' + page.month;
     } else if (is_year()) {
