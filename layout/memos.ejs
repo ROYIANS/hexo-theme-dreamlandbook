@@ -1,10 +1,10 @@
 <!-- css -->
 <%- css(theme.asset.fancybox_css) %>
 <%- js(theme.asset.marked_js) %>
-<section class="max-w-prose mx-auto px-2">
+<section class="max-w-prose mx-auto relative px-0 md:w-auto w-full">
     <!-- header -->
-    <header class="px-4 py-32 relative" style="background: url('<%= theme.memos.cover %>')">
-        <div class="inline-flex items-center gap-2 absolute right-8 -bottom-4">
+    <header class="w-full h-96 relative -top-24" style="background-image: url('<%= theme.memos.cover %>'); background-position: 100% 50%; background-size: cover;">
+        <div class="inline-flex items-center gap-2 absolute right-3 md:right-8 -bottom-4">
             <p class="font-bold text-base text-white"><%= config.author %></p>
             <img class="w-16 h-16 rounded object-cover no_fancy" src="<%= theme.avatar %>" alt="<%= config.author %>">
         </div>
@@ -13,19 +13,10 @@
     <article id="memos">
         <section class="flex flex-wrap px-2 pt-8 memo md:px-5">
             <div class="flex w-full">
-                <div class="w-12 h-12">
-                    <img class="w-full h-full rounded object-cover no_fancy" src="<%= theme.avatar %>" alt="<%= config.author %>">
-                </div>
-                <div class="pl-2">
-                    <p class="font-bold text-base" style="color: var(--roy-theme)"><%= config.author %></p>
-                    <div class="p-2 grid grid-cols-1 text-sm w-full">
-                        <p class="p-5" id="memos-content">
-                            <i class="ri-loader-4-line animate-spin inline-block"></i>
-                            正在加载中...
-                        </p>
-                    </div>
-                    <p class="time text-xs text-gray-400 pt-2">14:25</p>
-                </div>
+                <p class="p-5 text-center w-full" id="memos-content">
+                    <i class="ri-loader-4-line animate-spin inline-block"></i>
+                    正在加载中...
+                </p>
             </div>
         </section>
     </article>
@@ -51,7 +42,7 @@
       // 这样写的原因是，不能写grid-cols-${imageGrid},而要完整的把类名写完出来。这样渲染css的时候才会生效。
       const imageGridCols = imageGrid === 1 ? 'grid-cols-1' : imageGrid === 2 ? 'grid-cols-2' : 'grid-cols-3'
       return `
-        <div class="${imageGridCols} pt-2 grid gap-2 w-[20rem]">
+        <div class="${imageGridCols} pt-2 grid gap-2 w-4/5">
           ${list.map(resource => {
             return `<img class="rounded object-cover" style="aspect-ratio: 1" src="<%= theme.memos.url %>/o/r/${resource.id}/${resource.publicId}" alt="${item.creatorName}" />`
           }).join('\n')}
@@ -67,12 +58,12 @@
               return `
                 <section class="flex flex-wrap py-8 px-2 memo md:px-5">
                     <div class="flex w-full">
-                        <div class="w-12 h-12">
+                        <div class="w-12 h-12 flex-shrink-0">
                             <img class="w-full h-full rounded object-cover no_fancy" src="<%= theme.avatar %>" alt="${item.creatorName}">
                         </div>
-                        <div class="pl-2">
+                        <div class="px-4">
                             <p class="font-bold text-base" style="color: var(--roy-theme)">${item.creatorName}</p>
-                            <div class="p-2 grid grid-cols-1 text-sm w-full">
+                            <div class="grid grid-cols-1 text-sm w-full">
                                 <div class="heti">${marked.parse(item.content)}</div>
                                 ${imageList(item, item.resourceList)}
                             </div>
@@ -85,13 +76,13 @@
             doFancyBox($('#memos'))
           }
         }).catch(err => {
-          document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><pre>${err.message}</pre><p><button onclick="fetchMemos()">点击重试</button></p>`
+          document.getElementById('memos-content').innerHTML = `<p class="heti--serif pb-2">加载失败，<button onclick="fetchMemos()">点击重试</button></p><pre>${err.message}</pre>`
         })
       } else {
-        document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><p><button onclick="fetchMemos()">点击重试</button></p>`
+        document.getElementById('memos-content').innerHTML = `<p class="heti--serif pb-2">加载失败，<button onclick="fetchMemos()">点击重试</button></p>`
       }
     }).catch(err => {
-      document.getElementById('memos-content').innerHTML = `<p>加载失败！</p><pre>${err.message}</pre><p><button onclick="fetchMemos()">点击重试</button></p>`
+      document.getElementById('memos-content').innerHTML = `<p class="heti--serif pb-2">加载失败，<button onclick="fetchMemos()">点击重试</button></p><pre>${err.message}</pre>`
     })
   }
   fetchMemos()

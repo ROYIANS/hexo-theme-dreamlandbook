@@ -62,13 +62,13 @@ noticeOutdate:
 
 
 # favicon
-favicon: /images/royians/logo.png
+favicon: https://img.vidorra.life/images/royians/logo.png
 
 # logo
-logo: /images/royians/logo.png
+logo: https://img.vidorra.life/images/royians/logo.png
 
 # avatar
-avatar: /images/royians/avatar.jpg
+avatar: https://img.vidorra.life/images/royians/avatar.jpg
 
 title_font:
   enable: true,
@@ -76,9 +76,9 @@ title_font:
   font_size: 3.5rem
 
 memos:
-  url: https://memos.vidorra.life
+  url: https://memos-production-0cda.up.railway.app
   limit: 30
-  cover: /images/covers/tittle-tattle-cover.webp
+  cover: https://img.vidorra.life/images/covers/tittle-tattle-cover.webp
 
 # links
 links:
