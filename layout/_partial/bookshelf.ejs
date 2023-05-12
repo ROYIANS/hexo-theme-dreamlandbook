@@ -3,7 +3,6 @@
         <% let bookCategory = Object.keys(books) %>
         <% let letterGroup = category_by_pinyin_letter(bookCategory) %>
         <% let letterGroupKeys = Object.keys(letterGroup).sort() %>
-        <!--        <% console.log(letterGroupKeys, letterGroup, bookCategory) %>-->
         <% letterGroupKeys.forEach(letterKey => { %>
             <% const groupBookCategory = letterGroup[letterKey] %>
             <div class="w-full opacity-30 text-xs py-5 relative">

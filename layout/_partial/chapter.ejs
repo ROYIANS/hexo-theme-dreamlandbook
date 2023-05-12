@@ -21,11 +21,10 @@
     <% articles && articles.length && articles.forEach((article) => { %>
         <% const curIndex = increase_step_counter(book.id).value() %>
         <li class="heti--serif book-article text-base my-2.5 font-light">
-            <a href="<%= url_for(article.path) %>" title="<%= article.title %>" class="flex justify-between">
-                <span><%= article.title %></span>
-                <span class="whitespace-nowrap">
-                    <span class="px-2">/</span>
-                    <%= `${curIndex}`.padStart(3, '0') %>
+            <a href="<%= url_for(article.path) %>" title="<%= article.title %>" class="flex justify-between relative">
+                <span class="bg-white dark:bg-zinc-900 pr-3"><%= article.title %></span>
+                <span class="bg-white dark:bg-zinc-900 whitespace-nowrap before:-z-1 before:absolute before:top-1/2 before:right-0 before:w-full before:border-b before:border-main-text before:dark:border-main-text-dark before:border-dashed">
+                    <span class="pl-2"><%= `${curIndex}`.padStart(3, '0') %></span>
                 </span>
             </a>
         </li>
