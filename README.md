@@ -64,8 +64,7 @@ cp -rf ./themes/dreamland/_config.yml ./_config.dreamland.yml
 
 ## 开发计划
 
-<iframe width="100%" height="300px" style="border: none" src="https://royians.notion.site/DreamlandBook-63be2c44cad845d7affbc4d5ec62d24d">
-</iframe>
+[点击查看](https://royians.notion.site/DreamlandBook-63be2c44cad845d7affbc4d5ec62d24d)
 
 ## 仓库统计
 
