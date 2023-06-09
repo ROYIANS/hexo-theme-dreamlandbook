@@ -44,7 +44,11 @@
       return `
         <div class="${imageGridCols} pt-2 grid gap-2 w-4/5">
           ${list.map(resource => {
-            return `<img class="rounded object-cover" style="aspect-ratio: 1" src="<%= theme.memos.url %>/o/r/${resource.id}/${resource.publicId}" alt="${item.creatorName}" />`
+            let link = `<%= theme.memos.url %>/o/r/${resource.id}/${resource.publicId}`
+            if (resource.externalLink) {
+              link = resource.externalLink
+            }
+            return `<img class="rounded object-cover" style="aspect-ratio: 1" src="${link}" alt="${item.creatorName}" />`
           }).join('\n')}
         </div>
       `

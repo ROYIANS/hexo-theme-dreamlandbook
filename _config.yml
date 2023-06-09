@@ -76,7 +76,7 @@ title_font:
   font_size: 3.5rem
 
 memos:
-  url: https://memos-production-0cda.up.railway.app
+  url: https://piece.vidorra.life
   limit: 30
   cover: https://img.vidorra.life/images/covers/tittle-tattle-cover.webp
 
