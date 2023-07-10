@@ -28,7 +28,7 @@ const getUuid = (len = 20, radix) => {
   return uuid.join('');
 }
 
-function generateChapters(dirPath, level, bookTitle, bookPath) {
+function generateChapters(dirPath, level, bookTitle, bookPath, bookId) {
   const chapters = [];
   const articles = [];
 
@@ -39,7 +39,7 @@ function generateChapters(dirPath, level, bookTitle, bookPath) {
 
     if (stats.isDirectory()) {
       // 是目录则递归处理子章节
-      const subChapters = generateChapters(filePath, level + 1, bookTitle, bookPath);
+      const subChapters = generateChapters(filePath, level + 1, bookTitle, bookPath, bookId);
       // 处理章节信息...
       const indexFile = path.join(filePath, 'index.md');
       const content = fs.readFileSync(indexFile, 'utf-8');
@@ -59,7 +59,8 @@ function generateChapters(dirPath, level, bookTitle, bookPath) {
         let post = hexo.locals.get('posts').find({ source: postPath });
         post.data[0].book = {
           title: bookTitle,
-          path: bookPath
+          path: bookPath,
+          id: bookId
         }
 
         if (post.data && post.data.length === 1) {
@@ -69,7 +70,12 @@ function generateChapters(dirPath, level, bookTitle, bookPath) {
     }
   }
 
-  articles.sort((a, b) => b.date - a.date);
+  articles.sort((a, b) => {
+    if (a.order && b.order) {
+      return a.order - b.order
+    }
+    return b.date - a.date
+  });
   // 按照章节顺序排序
   chapters.sort((a, b) => a.order - b.order);
 
@@ -108,13 +114,14 @@ hexo.extend.generator.register('booker', function (locals) {
         const bookPath = `books/${file}/`
         let category = data.category || i18n('books.uncategorized')
         let booksCategory = books[category] || []
+        const bookId = getUuid()
         const book = {
-          id: getUuid(),
+          id: bookId,
           path: bookPath,
           level: 0,
           ...data,
           category: data.category || i18n('books.uncategorized'),
-          ...generateChapters(filePath, 0, data.title, bookPath)
+          ...generateChapters(filePath, 0, data.title, bookPath, bookId)
         }
         booksCategory.push(book)
         allBooks.push(book)
@@ -127,6 +134,7 @@ hexo.extend.generator.register('booker', function (locals) {
 
 
   locals.data.books = books;
+  locals.data.allBooks = allBooks;
 
   // TODO: 看看有没有简便的取法
   const bookTitle = i18n('books.title')

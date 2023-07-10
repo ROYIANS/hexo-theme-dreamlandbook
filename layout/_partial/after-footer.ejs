@@ -5,3 +5,6 @@
 <% if (theme.post_abstract && theme.post_abstract.enable && is_post()) { %>
     <%- partial('_plugins/post_abstract', { cache: true }) %>
 <% } %>
+<% if (page.book && is_post()) { %>
+    <%- partial('_partial/catalog', { cache: true }) %>
+<% } %>

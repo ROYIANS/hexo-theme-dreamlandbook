@@ -115,9 +115,9 @@ mermaid:
   theme: default
 
 twikoo:
-  enable: true
+  enable: false
   envId: https://comment.little-dream.land
-  visitor: true
+  visitor: false
 
 # 非必要請不要修改
 CDN:

@@ -29,6 +29,7 @@ copy:
 notice_out_date:
   message: 'It has been ${days} days since the last update, the content of the article may be outdated.'
 toggle_theme: toggle theme
+toggle_book_content: open catalog
 go_top: go to top
 busuanzi:
   visitor_count: Visitor Count

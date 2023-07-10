@@ -29,6 +29,7 @@ copy:
 notice_out_date:
   message: '距离上次更新已过去 ${days} 天，文章中的内容可能已经过时。'
 toggle_theme: 切换主题
+toggle_book_content: 目录
 go_top: 跳转顶部
 busuanzi:
   visitor_count: 访客数
