@@ -16,6 +16,11 @@
 
 一款基于[hexo-theme-maple](https://github.com/xbmlz/hexo-theme-maple)修改的主題
 
+## 👥加入 QQ 频道，讨论主题
+
+点击链接加入QQ频道【小梦岛】：https://pd.qq.com/s/79nj9iwe7
+** 该项目的讨论子频道为：【小梦岛/项目岛/hexo主题梦岛书讨论区】 **
+
 # hexo-theme-dreamlandbook
 
 ![博客主页](https://s2.loli.net/2023/05/12/bfViMkJWOpFalHu.png)
