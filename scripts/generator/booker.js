@@ -64,7 +64,10 @@ function generateChapters(dirPath, level, bookTitle, bookPath, bookId) {
         }
 
         if (post.data && post.data.length === 1) {
-          articles.push(post.data[0]);
+          articles.push({
+            path: post.data[0].path,
+            title: post.data[0].title
+          });
         }
       }
     }
