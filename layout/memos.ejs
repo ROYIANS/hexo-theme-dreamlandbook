@@ -56,9 +56,8 @@
     fetch("<%= theme.memos.url %>/api/v1/memo/all?limit=<%= theme.memos.limit %>").then(resp => {
       if (resp && resp.ok) {
         resp.json().then(res => {
-          const { data } = res;
-          if (data && data.length) {
-            document.getElementById('memos').innerHTML = data.map(item => {
+          if (res && res.length) {
+            document.getElementById('memos').innerHTML = res.map(item => {
               return `
                 <section class="flex flex-wrap py-8 px-2 memo md:px-5">
                     <div class="flex w-full">
