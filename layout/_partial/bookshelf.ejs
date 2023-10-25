@@ -28,9 +28,9 @@
                                 <div class="book-pages book-inner"></div>
                                 <div class="book-pages book-inner"></div>
                                 <div class="book-cover book-inner" style="<%= `background-color: ${bookColor}; ${bookCover ? `background-image: url('${bookCover}')` : ''}` %>">
-                                    <h2 class="inline-flex flex-wrap justify-start" style="<%= `${fontColor ? `color: ${fontColor}` : ''};` %>">
+                                    <h2 class="inline-flex flex-wrap justify-start pr-1.5" style="<%= `${fontColor ? `color: ${fontColor}` : ''};` %>">
                                         <span class="text-sm book-author w-full"><%= book.author || config.author %></span>
-                                        <span class="text-base font-bold"><%= book.title %></span>
+                                        <span class="text-base font-bold break-all"><%= book.title %></span>
                                     </h2>
                                 </div>
                             </a>

@@ -52,10 +52,14 @@ const registerHeaderBottomBorder = () => {
       if (e.intersectionRatio < 1) {
         $("#blog-header")
           .css("border-bottom", "1px solid rgb(0 0 0 / 0.05)");
+        $("#blog-header").toggleClass("backdrop-saturate-150", true)
+        $("#blog-header").toggleClass("backdrop-blur-xl", true)
         $("#blog-title-href").toggleClass("hidden", false)
       } else {
         $("#blog-header")
           .css("border-bottom", "none");
+        $("#blog-header").toggleClass("backdrop-saturate-150", false)
+        $("#blog-header").toggleClass("backdrop-blur-xl", false)
         $("#blog-title-href").toggleClass("hidden", GLOBAL_CONFIG.isHome ? true : false)
       }
     },

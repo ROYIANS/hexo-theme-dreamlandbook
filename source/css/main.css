@@ -88,5 +88,9 @@ html {
 }
 
 ::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #faf8f5;
+}
+
+.dark ::-webkit-scrollbar-corner, .dark ::-webkit-scrollbar-track {
+  background: #121212;
 }
